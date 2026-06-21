@@ -49,7 +49,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
     --ivory:#F4F0E6;
@@ -82,9 +82,9 @@
     font-size:11px;letter-spacing:.34em;text-transform:uppercase;
     color:var(--muted);font-weight:400;
   }
-  .serif{font-family:"Fraunces",Georgia,serif}
-  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:400;letter-spacing:.01em}
-  h1,h2,h3,.serif,.c-name,.glance dd,.xp h4{font-feature-settings:"liga" 1,"dlig" 1,"onum" 1;font-variation-settings:"SOFT" 30}
+  .serif{font-family:"Playfair Display",Georgia,serif}
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:400;letter-spacing:.01em}
+  h1,h2,h3,.serif,.c-name,.glance dd,.xp h4{font-feature-settings:"liga" 1,"onum" 1}
   body{font-feature-settings:"liga" 1,"onum" 1}
   .rule{height:1px;background:var(--silver-line);border:0}
 
@@ -146,16 +146,16 @@
   /* ---------- Hero ---------- */
   .hero{padding:190px 0 110px;position:relative}
   .hero-crest{position:absolute;top:104px;right:40px;width:72px;height:auto;opacity:.95;z-index:2}
-  .hero-crest .kg{font-family:"Fraunces",Georgia,serif;font-weight:500}
+  .hero-crest .kg{font-family:"Playfair Display",Georgia,serif;font-weight:500}
   .masthead{display:flex;justify-content:space-between;align-items:center;gap:16px;
     border-top:1px solid var(--silver-line);border-bottom:1px solid var(--silver-line);
     padding:13px 0;margin-bottom:46px}
   .masthead span{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-  .masthead .mid{font-family:"Fraunces",serif;letter-spacing:.42em;color:var(--ink-soft)}
+  .masthead .mid{font-family:"Playfair Display",serif;letter-spacing:.42em;color:var(--ink-soft)}
   @media(max-width:560px){.masthead .edge2{display:none}.masthead{letter-spacing:.2em}}
   .hero .eyebrow{margin-bottom:42px;max-width:78%}
   .hero h1{
-    font-size:clamp(56px,11vw,150px);line-height:.92;letter-spacing:-.01em;font-weight:300;
+    font-size:clamp(54px,10.5vw,142px);line-height:.96;letter-spacing:-.005em;font-weight:400;
   }
   .hero h1 .last{font-weight:500;font-style:italic}
   .hero-meta{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:46px;max-width:760px}
@@ -181,7 +181,7 @@
   .about-grid p{font-size:18px;color:var(--ink-soft);font-weight:300;margin-bottom:22px;line-height:1.62}
   .about-grid p .serif{font-style:italic;font-size:1.08em;color:var(--ink)}
   .glance dt{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:20px}
-  .glance dd{font-family:"Fraunces",serif;font-size:23px;line-height:1.25;margin-top:3px}
+  .glance dd{font-family:"Playfair Display",serif;font-size:23px;line-height:1.25;margin-top:3px}
   .glance{border-left:1px solid var(--silver-line);padding-left:30px}
 
   /* ---------- Projects ---------- */
@@ -190,7 +190,7 @@
     padding:54px 0;border-top:1px solid var(--silver-line);
   }
   .project:last-child{border-bottom:1px solid var(--silver-line)}
-  .p-num{font-family:"Fraunces",serif;font-size:30px;color:var(--silver);transition:transform .45s cubic-bezier(.2,.6,.2,1),color .45s ease}
+  .p-num{font-family:"Playfair Display",serif;font-size:30px;color:var(--silver);transition:transform .45s cubic-bezier(.2,.6,.2,1),color .45s ease}
   .project:hover .p-num{transform:translateY(-4px);color:var(--ink)}
   .p-body{display:grid;grid-template-columns:1fr;gap:26px}
   .p-head .p-meta{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;gap:16px;flex-wrap:wrap}
@@ -223,7 +223,7 @@
   .xp-block > .eyebrow{margin-bottom:26px}
   .xp{display:grid;grid-template-columns:200px 1fr;gap:30px;padding:26px 0;border-top:1px solid var(--silver-line)}
   .xp .when{font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-  .xp h4{font-family:"Fraunces",serif;font-size:25px;font-weight:500;line-height:1.15}
+  .xp h4{font-family:"Playfair Display",serif;font-size:25px;font-weight:500;line-height:1.15}
   .xp .org{font-size:13px;color:var(--graphite);margin:3px 0 12px}
   .xp ul{list-style:none}
   .xp li{font-size:15px;color:var(--ink-soft);font-weight:300;padding-left:18px;position:relative;margin-bottom:7px;line-height:1.55}
@@ -243,7 +243,7 @@
   .card::after{content:"";position:absolute;inset:7px;border:1px solid rgba(168,167,158,.4);pointer-events:none}
   .card-crest{position:absolute;top:30px;right:34px;width:52px;height:auto;opacity:.95}
   .card .c-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-  .card .c-name{font-family:"Fraunces",serif;font-size:46px;line-height:1;font-weight:300;margin:14px 0 4px}
+  .card .c-name{font-family:"Playfair Display",serif;font-size:46px;line-height:1;font-weight:300;margin:14px 0 4px}
   .card .c-name em{font-style:italic;font-weight:500}
   .card .c-role{font-size:12px;letter-spacing:.04em;color:var(--graphite)}
   .card .c-rule{height:1px;background:var(--silver-line);margin:22px 0}
@@ -303,7 +303,7 @@
 <div id="veil" aria-hidden="true">
   <svg viewBox="0 0 64 72">
     <path class="draw" d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="none" stroke="#17150F" stroke-width="1.6"/>
-    <text class="vkg" x="32" y="42" font-family="Fraunces, Georgia, serif" font-weight="500" font-size="22" fill="#17150F" text-anchor="middle">KG</text>
+    <text class="vkg" x="32" y="42" font-family="Playfair Display, Georgia, serif" font-weight="500" font-size="22" fill="#17150F" text-anchor="middle">KG</text>
   </svg>
 </div>
 <div class="grain" aria-hidden="true"></div>
@@ -601,7 +601,7 @@
       <svg class="card-crest" viewBox="0 0 64 72" role="img" aria-label="Killian Gérard monogram">
         <path d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="#17150F" stroke="#CFCBBF" stroke-width="1.4"/>
         <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
-        <text x="32" y="42" font-family="Fraunces, Georgia, serif" font-weight="500" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
+        <text x="32" y="42" font-family="Playfair Display, Georgia, serif" font-weight="500" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
       </svg>
       <div class="c-eyebrow">Mechatronics Engineering</div>
       <div class="c-name">Killian <em>Gérard</em></div>
