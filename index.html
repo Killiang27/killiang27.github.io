@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Killian Gérard — Mechatronics Engineering Portfolio</title>
-<meta name="description" content="Portfolio and CV of Killian Gérard — Mechatronics Engineering graduate with hands-on machine learning, energy-sector internships, and a path into fintech and quantitative finance." />
+<title>Killian Gerard — Mechatronics Engineering Portfolio</title>
+<meta name="description" content="Portfolio and CV of Killian Gerard — Mechatronics Engineering graduate with hands-on machine learning, energy-sector internships, and a path into fintech and quantitative finance." />
 <meta name="theme-color" content="#F4F0E6" />
 <link rel="canonical" href="https://killiang27.github.io/" />
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Killian Gérard — Mechatronics Engineering Portfolio" />
+<meta property="og:title" content="Killian Gerard — Mechatronics Engineering Portfolio" />
 <meta property="og:description" content="Mechatronics Engineering graduate. Machine learning, embedded robotics and high-speed-rail vibration analysis. Heading to IE Madrid for an MSc in Fintech." />
 <meta property="og:url" content="https://killiang27.github.io/" />
 <meta property="og:image" content="https://killiang27.github.io/assets/og-card.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Killian Gérard — Mechatronics Engineering Portfolio" />
+<meta name="twitter:title" content="Killian Gerard — Mechatronics Engineering Portfolio" />
 <meta name="twitter:description" content="Machine learning, embedded robotics and high-speed-rail vibration analysis. Heading to IE Madrid for an MSc in Fintech." />
 <meta name="twitter:image" content="https://killiang27.github.io/assets/og-card.png" />
 
@@ -29,7 +29,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Killian Gérard",
+  "name": "Killian Gerard",
   "url": "https://killiang27.github.io/",
   "email": "killian22.gerard@gmail.com",
   "jobTitle": "Mechatronics Engineering Graduate",
@@ -158,6 +158,13 @@
     font-size:clamp(54px,10.5vw,142px);line-height:.96;letter-spacing:-.005em;font-weight:400;
   }
   .hero h1 .last{font-weight:500;font-style:italic}
+  .hero-nat{margin-top:20px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  /* project repo link */
+  .p-repo{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);position:relative;width:fit-content}
+  .p-repo::after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:var(--silver);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.6,.2,1)}
+  .p-repo:hover{color:var(--ink)}
+  .p-repo:hover::after{transform:scaleX(1)}
+  .p-repo svg{width:15px;height:15px;display:block}
   .hero-meta{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:46px;max-width:760px}
   .hero-lead{font-size:clamp(17px,2vw,21px);font-weight:300;color:var(--ink-soft);max-width:680px;margin-top:46px;line-height:1.5}
   .hero-lead .serif{font-style:italic;font-size:1.12em}
@@ -254,7 +261,10 @@
   .card dd a:hover{border-color:var(--silver)}
   @media(max-width:560px){.card{padding:32px 26px}.card .c-name{font-size:38px}.card-crest{width:42px;top:24px;right:24px}}
 
-  footer{border-top:1px solid var(--silver-line);padding:40px 0;text-align:center}
+  footer{border-top:1px solid var(--silver-line);padding:48px 0;text-align:center}
+  .footer-crest{display:inline-block;margin-bottom:18px}
+  .footer-crest svg{width:40px;height:auto;transition:transform .4s cubic-bezier(.2,.6,.2,1)}
+  .footer-crest:hover svg{transform:translateY(-3px)}
   footer p{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 
   /* reveal on scroll */
@@ -309,7 +319,7 @@
 <div class="grain" aria-hidden="true"></div>
 <header class="nav">
   <div class="wrap nav-inner">
-    <a href="#top" class="brand">KILLIAN&nbsp;<b>GÉRARD</b></a>
+    <a href="#top" class="brand">KILLIAN&nbsp;<b>GERARD</b></a>
     <div class="nav-right">
       <nav class="nav-links" id="navLinks">
         <a href="#about">About</a>
@@ -319,8 +329,8 @@
         <a href="assets/Killian-Gerard-CV.pdf" class="cv" target="_blank">CV (PDF)</a>
         <a href="assets/Killian-Gerard-Portfolio.pdf" class="cv" target="_blank">Portfolio (PDF)</a>
       </nav>
-      <a href="#top" class="nav-crest" aria-label="Killian Gérard — home">
-        <svg viewBox="0 0 64 72" role="img" aria-label="Killian Gérard monogram">
+      <a href="#top" class="nav-crest" aria-label="Killian Gerard — home">
+        <svg viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
           <path d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="#17150F" stroke="#CFCBBF" stroke-width="1.4"/>
           <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
           <text class="kg" x="32" y="42" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
@@ -338,8 +348,9 @@
   <div class="wrap">
     <div class="masthead anim a1"><span class="edge">London, UK</span><span class="mid">Portfolio</span><span class="edge edge2">Anno MMXXVI</span></div>
     <p class="eyebrow anim a2">Mechatronics Engineering · Machine Learning · London</p>
-    <h1 class="anim a2">Killian<br><span class="last">Gérard</span></h1>
-    <p class="hero-lead anim a3">Mechatronics&nbsp;BEng graduate building <span class="serif">end-to-end engineering</span> — from embedded robotics and high-speed-rail vibration analysis to machine-learning models that forecast the life of an asset. Two internships in live energy operations. Trilingual. Heading to <span class="serif">IE Madrid</span> for an MSc in Fintech.</p>
+    <h1 class="anim a2">Killian<br><span class="last">Gerard</span></h1>
+    <p class="hero-nat anim a2">Dual French &amp; British national · Trilingual</p>
+    <p class="hero-lead anim a3">I am a Mechatronics&nbsp;BEng graduate who likes taking an idea all the way to a working build. My work runs from embedded robotics and high-speed-rail vibration analysis to <span class="serif">machine-learning</span> models that forecast how long an asset will last. I spent two summers inside live energy operations, and this September I begin an MSc in Fintech at <span class="serif">IE Madrid</span>.</p>
     <div class="hero-cta anim a4">
       <a href="#projects" class="btn">View Projects</a>
       <a href="assets/Killian-Gerard-Portfolio.pdf" class="btn ghost" target="_blank">Download Portfolio</a>
@@ -351,11 +362,11 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-head"><h2>Engineering, end to end</h2><span class="idx">01 — About</span></div>
+    <div class="sec-head"><h2>Engineering, end to end</h2><span class="idx">01 · About</span></div>
     <div class="about-grid">
       <div>
-        <p>I am a <span class="serif">Mechatronics Engineering</span> graduate from Lancaster University with a foundation in engineering first principles and a habit of taking projects from concept to a working build — mechanical design, embedded control, simulation and testing.</p>
-        <p>My most rigorous work sits at the meeting point of hardware and data: an <span class="serif">LSTM model</span> predicting the remaining useful life of lithium-ion batteries to within a fraction of a percent, and a vibration-analysis suspension concept for high-speed rail with machine-learning anomaly detection. Alongside my degree I completed two internships in live energy operations — <span class="serif">Vitol</span> on UK gas turbines and <span class="serif">VIVO Energy (Shell licensee)</span> on LPG and oil infrastructure in Morocco — where I learned CAPEX/OPEX modelling and demand forecasting in the field.</p>
+        <p>I am a <span class="serif">Mechatronics Engineering</span> graduate from Lancaster University with a foundation in engineering first principles and a habit of taking projects from concept to a working build, covering mechanical design, embedded control, simulation and testing.</p>
+        <p>My most rigorous work sits at the meeting point of hardware and data: an <span class="serif">LSTM model</span> predicting the remaining useful life of lithium-ion batteries to within a fraction of a percent, and a vibration-analysis suspension concept for high-speed rail with machine-learning anomaly detection. Alongside my degree I completed two internships in live energy operations: <span class="serif">Vitol</span> on UK gas turbines, then <span class="serif">VIVO Energy (Shell licensee)</span> on LPG and oil infrastructure in Morocco, where I learned CAPEX/OPEX modelling and demand forecasting in the field.</p>
         <p>That blend of engineering discipline and quantitative modelling is what draws me toward <span class="serif">quantitative finance</span>, which I will pursue formally through IE Madrid's MSc in Fintech.</p>
       </div>
       <dl class="glance">
@@ -363,7 +374,7 @@
         <dt>Focus</dt><dd>Machine learning &amp; mechatronics</dd>
         <dt>Degree</dt><dd>Mechatronics Engineering BEng (Hons)</dd>
         <dt>University</dt><dd>Lancaster University</dd>
-        <dt>Next</dt><dd>MSc Fintech — IE Madrid, Sept 2026</dd>
+        <dt>Next</dt><dd>MSc Fintech, IE Madrid (Sept 2026)</dd>
         <dt>Languages</dt><dd>French &amp; English (native), Spanish (proficient)</dd>
         <dt>Location</dt><dd>London, United Kingdom</dd>
       </dl>
@@ -374,7 +385,7 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <div class="sec-head"><h2>Selected work</h2><span class="idx">02 — Projects</span></div>
+    <div class="sec-head"><h2>Selected work</h2><span class="idx">02 · Projects</span></div>
 
     <!-- P1 Battery ML -->
     <article class="project">
@@ -384,17 +395,18 @@
           <div class="p-meta"><span>Third-year project</span><span>Individual</span><span>2025</span></div>
           <h3>Machine Learning for the <em>Remaining Useful Life</em> of Lithium-Ion Batteries</h3>
         </div>
-        <p class="p-desc">Trained an LSTM network on the Stanford/MIT battery-discharge dataset to forecast capacity degradation and detect the knee-point of sudden decline, achieving a mean absolute percentage error below 0.07%. Built an interactive Gradio interface to tune sequence length, epochs and train/test split, with safeguards against data leakage and battery-boundary mixing — work that maps directly onto risk and asset-default modelling.</p>
+        <a class="p-repo" href="https://github.com/killiang27/li-ion-battery-rul-prediction" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View repository</a>
+        <p class="p-desc">I trained a two-layer LSTM on the Stanford/MIT battery-discharge dataset to predict how capacity fades over time and to catch the knee-point where decline suddenly accelerates, landing a mean absolute percentage error under 0.07%. I also built a Gradio interface for tuning the sequence length, epochs and train/test split, with guards so the model never leaks data across battery boundaries. The same forecasting idea carries straight over to risk and asset-default modelling.</p>
         <div class="p-tags">
           <span class="tag">Python</span><span class="tag">TensorFlow / Keras</span><span class="tag">LSTM</span><span class="tag">Time-series</span><span class="tag">Gradio</span>
         </div>
         <figure class="p-figure">
           <img src="assets/battery-stanford.png" alt="Feature engineering: capacity plateau vs extracted dQ/dN sensitivity on the Stanford dataset" loading="lazy" />
-          <figcaption>Feature engineering — capacity plateau vs. extracted dQ/dN degradation signal (Stanford dataset)</figcaption>
+          <figcaption>Feature engineering: capacity plateau vs. extracted dQ/dN degradation signal (Stanford dataset)</figcaption>
         </figure>
         <figure class="p-figure">
           <img src="assets/battery-lstm-code.png" alt="The two-layer LSTM model definition in Keras: stacked LSTM layers with dropout and a dense output" loading="lazy" />
-          <figcaption>The model — a two-layer stacked LSTM (64 → 32 units) with dropout, Adam optimiser and MSE loss</figcaption>
+          <figcaption>The model: a two-layer stacked LSTM (64 → 32 units) with dropout, Adam optimiser and MSE loss</figcaption>
         </figure>
       </div>
     </article>
@@ -405,19 +417,20 @@
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span>Third-year project</span><span>Group of 3</span><span>2025</span></div>
-          <h3>Vibration Analysis — <em>High-Speed-Rail Suspension</em> with ML Anomaly Detection</h3>
+          <h3>Vibration Analysis: <em>High-Speed-Rail Suspension</em> with ML Anomaly Detection</h3>
         </div>
-        <p class="p-desc">Designed a semi-active suspension concept for a high-speed train — air springs with variable stiffness, a hydraulic actuator and secondary damper — modelled on quarter-car physics. Paired it with an LSTM autoencoder that reconstructs vibration signals and flags anomalies via reconstruction error, triggering an automated speed-response interlock when a fault is confirmed.</p>
+        <a class="p-repo" href="https://github.com/killiang27/train-vibration-anomaly-detection" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View repository</a>
+        <p class="p-desc">Working in a group of three, I helped design a semi-active suspension for a high-speed train: variable-stiffness air springs paired with a hydraulic actuator and a secondary damper, all modelled on quarter-car physics. I then built an LSTM autoencoder that reconstructs the vibration signal and watches the reconstruction error for anomalies. When it confirms a genuine fault, the system tells the train to slow down on its own.</p>
         <div class="p-tags">
           <span class="tag">Quarter-car model</span><span class="tag">LSTM autoencoder</span><span class="tag">Signal processing</span><span class="tag">MEMS / piezo sensing</span>
         </div>
         <figure class="p-figure">
           <img src="assets/vibration-sketch.png" alt="System-level architecture: carriage body, bogie frame and axle with air spring, hydraulic actuator, sensors and MCU/LSTM controller" loading="lazy" />
-          <figcaption>System-level architecture — air spring, hydraulic actuator, MEMS/piezo sensing and the MCU/LSTM anomaly-detection controller</figcaption>
+          <figcaption>System-level architecture: air spring, hydraulic actuator, MEMS/piezo sensing and the MCU/LSTM anomaly-detection controller</figcaption>
         </figure>
         <figure class="p-figure">
           <img src="assets/vibration-quartercar.png" alt="Quarter-car suspension displacement, anomaly score and hydraulic valve status" loading="lazy" />
-          <figcaption>Quarter-car physics — air-spring + hydraulic-damper displacement and valve response under fault injection</figcaption>
+          <figcaption>Quarter-car physics: air-spring and hydraulic-damper displacement and valve response under fault injection</figcaption>
         </figure>
       </div>
     </article>
@@ -430,17 +443,17 @@
           <div class="p-meta"><span>Second-year project</span><span>Team</span><span>2024</span></div>
           <h3>Line-Following Robot with a <em>Dual-Barrel Ping-Pong Cannon</em></h3>
         </div>
-        <p class="p-desc">Built an autonomous, microcontroller-driven robot that follows a line using LDR sensing and fires ping-pong balls at a specified target after travelling a set distance. A dual-barrel mechanism — 3D-printed cannon, elastic-band ball hammer and a servo-released string trigger — launches both balls at different heights.</p>
+        <p class="p-desc">We built an autonomous robot that tracks a line with LDR sensors and fires ping-pong balls at a target once it has covered a set distance. The firing mechanism uses two 3D-printed barrels, an elastic-band ball hammer and a servo that releases a string trigger, so the two balls launch at different heights.</p>
         <div class="p-tags">
           <span class="tag">Embedded C / Arduino</span><span class="tag">LDR line detection</span><span class="tag">Servo actuation</span><span class="tag">3D printing</span>
         </div>
         <figure class="p-figure">
           <img src="assets/robot-photo.png" alt="The built line-following robot with twin 3D-printed ping-pong cannons on a green chassis" loading="lazy" />
-          <figcaption>The built robot — twin 3D-printed barrels with elastic-band firing on the drive chassis</figcaption>
+          <figcaption>The built robot: twin 3D-printed barrels with elastic-band firing on the drive chassis</figcaption>
         </figure>
         <figure class="p-figure">
           <img src="assets/robot-cannon.png" alt="Skeletal diagram of the dual-barrel cannon: ball hammer, elastic bands and servo-released string trigger" loading="lazy" />
-          <figcaption>Cannon mechanism — ball hammer, elastic bands and a servo-released string trigger</figcaption>
+          <figcaption>Cannon mechanism: ball hammer, elastic bands and a servo-released string trigger</figcaption>
         </figure>
       </div>
     </article>
@@ -453,7 +466,7 @@
           <div class="p-meta"><span>First-year project</span><span>IMechE</span><span>2023</span></div>
           <h3>IMechE Autonomous <em>Wall-Strike &amp; Return</em> Robot Car</h3>
         </div>
-        <p class="p-desc">Designed and built a robot car for the IMechE challenge programmed to drive into a wall and reverse precisely back into its original starting position — an exercise in deterministic control, distance calibration and mechanical reliability.</p>
+        <p class="p-desc">For the IMechE challenge I designed and built a robot car that drives into a wall and then reverses back to exactly where it started. Getting it consistent came down to careful distance calibration and a simple control sequence the car could repeat every run.</p>
         <div class="p-tags">
           <span class="tag">SolidWorks</span><span class="tag">DPDT control</span><span class="tag">Motor control</span><span class="tag">Mechanical design</span>
         </div>
@@ -464,7 +477,7 @@
           </figure>
           <figure class="p-figure">
             <img src="assets/imeche-circuit.png" alt="DPDT switch circuit reversing the motor between power supply and drive" loading="lazy" />
-            <figcaption>DPDT reversing circuit — motor &amp; power supply</figcaption>
+            <figcaption>DPDT reversing circuit: motor &amp; power supply</figcaption>
           </figure>
         </div>
       </div>
@@ -478,7 +491,7 @@
           <div class="p-meta"><span>First-year project</span><span>Group</span><span>2023</span></div>
           <h3>Scalable Miniature <em>Wind-Turbine Aerofoil</em></h3>
         </div>
-        <p class="p-desc">Designed, modelled and wind-tunnel tested a scalable aerofoil blade for maximum power-extraction efficiency. Used JavaFoil and SolidWorks for the geometry, then measured current, voltage and power across fan output levels to compute the coefficient of performance and tip-speed ratio, identifying optimal operating conditions and sources of experimental error.</p>
+        <p class="p-desc">We designed, modelled and wind-tunnel tested a scalable aerofoil blade built to pull as much power as possible out of the airflow. The geometry came together in JavaFoil and SolidWorks, then we measured current, voltage and power across different fan speeds to work out the coefficient of performance and tip-speed ratio, along with where the experiment started losing accuracy.</p>
         <div class="p-tags">
           <span class="tag">SolidWorks</span><span class="tag">JavaFoil</span><span class="tag">Wind-tunnel testing</span><span class="tag">Aerodynamics</span>
         </div>
@@ -500,7 +513,7 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head"><h2>Experience &amp; education</h2><span class="idx">03 — Curriculum Vitae</span></div>
+    <div class="sec-head"><h2>Experience &amp; education</h2><span class="idx">03 · Curriculum Vitae</span></div>
 
     <div class="xp-block">
       <div class="eyebrow">Professional experience</div>
@@ -511,7 +524,7 @@
           <div class="org">VIVO Energy (Shell Licensee) · Morocco</div>
           <ul>
             <li>Shadowed engineers across 3+ LPG and oil-infrastructure disciplines, supporting project development and management.</li>
-            <li>Learned end-to-end CAPEX/OPEX modelling — Excel model structure, oil-demand forecasting and tank-reserve analytics with fail-safe systems.</li>
+            <li>Learned end-to-end CAPEX/OPEX modelling, covering Excel model structure, oil-demand forecasting and tank-reserve analytics with fail-safe systems.</li>
             <li>Monitored oil-tank construction and welding under strict safety regulation; redesigned the division's engineer-onboarding deck for the learning portal.</li>
           </ul>
         </div>
@@ -545,7 +558,7 @@
       <div class="xp">
         <div class="when">2016 – 2021</div>
         <div>
-          <h4>Corporal — Royal Air Force (CCF) Cadets</h4>
+          <h4>Corporal, Royal Air Force (CCF) Cadets</h4>
           <div class="org">Leadership, navigation, first aid and flight training</div>
           <ul>
             <li>Reached Corporal; trained in navigation, drill, first aid and flight (single-prop aircraft, simulators, Chinook/Puma helicopters).</li>
@@ -555,8 +568,15 @@
       <div class="xp">
         <div class="when">2017 – 2018</div>
         <div>
-          <h4>Duke of Edinburgh's Award — Silver &amp; Bronze</h4>
+          <h4>Duke of Edinburgh's Award: Silver &amp; Bronze</h4>
           <div class="org">Including a self-sufficient 50+ km, three-day expedition</div>
+        </div>
+      </div>
+      <div class="xp">
+        <div class="when">Music</div>
+        <div>
+          <h4>Piano &amp; Violin</h4>
+          <div class="org">Graded examinations: Piano Grade 5 and Violin Grade 4 completed</div>
         </div>
       </div>
     </div>
@@ -565,7 +585,7 @@
       <div class="eyebrow">Education</div>
       <div class="xp">
         <div class="when">2026 →</div>
-        <div><h4>IE University, Madrid</h4><div class="org">MSc Fintech — commencing September 2026</div></div>
+        <div><h4>IE University, Madrid</h4><div class="org">MSc Fintech, commencing September 2026</div></div>
       </div>
       <div class="xp">
         <div class="when">2023 – 2026</div>
@@ -577,7 +597,7 @@
       </div>
       <div class="xp">
         <div class="when">2015 – 2021</div>
-        <div><h4>Colfe's School</h4><div class="org">London, UK — Private secondary &amp; sixth form (A-Levels: Maths, Physics, Spanish)</div></div>
+        <div><h4>Colfe's School</h4><div class="org">London, UK. Private secondary &amp; sixth form (A-Levels: Maths, Physics, Spanish)</div></div>
       </div>
     </div>
 
@@ -598,18 +618,18 @@
     <p class="lead">I'm open to conversations across engineering, machine learning, fintech and quantitative finance. Email or LinkedIn is the best way to reach me.</p>
 
     <div class="card">
-      <svg class="card-crest" viewBox="0 0 64 72" role="img" aria-label="Killian Gérard monogram">
+      <svg class="card-crest" viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
         <path d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="#17150F" stroke="#CFCBBF" stroke-width="1.4"/>
         <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
         <text x="32" y="42" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
       </svg>
       <div class="c-eyebrow">Mechatronics Engineering</div>
-      <div class="c-name">Killian <em>Gérard</em></div>
+      <div class="c-name">Killian <em>Gerard</em></div>
       <div class="c-role">Machine Learning · Embedded Systems · Fintech</div>
       <div class="c-rule"></div>
       <dl>
         <dt>Email</dt><dd><a href="mailto:killian22.gerard@gmail.com">killian22.gerard@gmail.com</a></dd>
-        <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/killian-g%C3%A9rard-362aba239" target="_blank">linkedin.com/in/killian-gérard</a></dd>
+        <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/killian-g%C3%A9rard-362aba239" target="_blank">linkedin.com/in/killian-gerard</a></dd>
         <dt>GitHub</dt><dd><a href="https://github.com/killiang27" target="_blank">github.com/killiang27</a></dd>
         <dt>Based in</dt><dd>London, United Kingdom</dd>
       </dl>
@@ -624,7 +644,16 @@
 </section>
 
 <footer>
-  <div class="wrap"><p>Killian Gérard — Mechatronics Engineering Portfolio · MMXXVI</p></div>
+  <div class="wrap">
+    <a href="#top" class="footer-crest" aria-label="Back to top">
+      <svg viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
+        <path d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="#17150F" stroke="#CFCBBF" stroke-width="1.4"/>
+        <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
+        <text x="32" y="42" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
+      </svg>
+    </a>
+    <p>Killian Gerard · Mechatronics Engineering Portfolio · MMXXVI</p>
+  </div>
 </footer>
 
 <script>
