@@ -288,7 +288,48 @@
     .project:hover .p-num{transform:none}
     .p-head h3::after,.nav-links a:not(.cv)::after{transition:none}
   }
+  /* ---------- Nav toggles ---------- */
+  .nav-tools{display:flex;align-items:center;gap:18px}
+  .tbtn{background:none;border:0;cursor:pointer;color:var(--graphite);font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:2px;transition:color .25s;display:inline-flex;align-items:center;gap:6px}
+  .tbtn:hover{color:var(--ink)}
+  .lang-btn .on{color:var(--ink);font-weight:500}
+  .lang-btn .off{opacity:.45}
+  .theme-btn svg{width:15px;height:15px;display:block}
+
+  /* ---------- Dark (ink) mode ---------- */
+  body.dark{--ivory:#15130F;--ivory-deep:#1d1a15;--ink:#F1ECDF;--ink-soft:#D2CCBE;--muted:#8C877A;--silver:#6C685E;--silver-line:#332F28;--graphite:#A79F90}
+  body.dark .grain{mix-blend-mode:soft-light;opacity:.08}
+  body.dark header.nav{background:rgba(21,19,15,.82)}
+  body.dark .nav-crest svg path:nth-of-type(1),
+  body.dark .footer-crest svg path:nth-of-type(1),
+  body.dark .card-crest path:nth-of-type(1){fill:var(--ink)}
+  body.dark .nav-crest svg text,
+  body.dark .footer-crest svg text,
+  body.dark .card-crest text{fill:var(--ivory)}
+  body.dark #veil .draw{stroke:var(--ink)}
+  body.dark #veil .vkg{fill:var(--ink)}
+  body.dark .card{background:linear-gradient(180deg,#1d1a15,#161410)}
+  body.dark .p-figure{background:#f4f0e6}
+
+  /* ---------- Stats band ---------- */
+  .stats-sec{padding:70px 0}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:30px 18px;
+    border-top:1px solid var(--silver-line);border-bottom:1px solid var(--silver-line);padding:48px 0}
+  .stat{text-align:center}
+  .stat .num{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(40px,5.2vw,60px);font-weight:500;line-height:1;color:var(--ink);font-feature-settings:"onum" 1}
+  .stat .lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:12px;line-height:1.4}
+
+  /* ---------- Filter chips ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+  .chip{font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite);
+    border:1px solid var(--silver-line);padding:9px 16px;border-radius:999px;background:none;cursor:pointer;transition:.28s}
+  .chip:hover{border-color:var(--ink);color:var(--ink)}
+  .chip.active{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+  .project{transition:opacity .4s ease}
+  .project.hide{display:none}
+
   @media(max-width:860px){
+    .nav-tools{gap:12px}
     .wrap{padding:0 24px}
     .nav-links{position:fixed;inset:74px 0 auto 0;background:var(--ivory);flex-direction:column;gap:0;padding:8px 24px 24px;border-bottom:1px solid var(--silver-line);display:none}
     .nav-links.open{display:flex}
@@ -322,13 +363,19 @@
     <a href="#top" class="brand">KILLIAN&nbsp;<b>GERARD</b></a>
     <div class="nav-right">
       <nav class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-fr="À propos">About</a>
+        <a href="#projects" data-fr="Projets">Projects</a>
+        <a href="#experience" data-fr="Expérience">Experience</a>
+        <a href="#contact" data-fr="Contact">Contact</a>
         <a href="assets/Killian-Gerard-CV.pdf" class="cv" target="_blank">CV (PDF)</a>
         <a href="assets/Killian-Gerard-Portfolio.pdf" class="cv" target="_blank">Portfolio (PDF)</a>
       </nav>
+      <div class="nav-tools">
+        <button class="tbtn lang-btn" id="langBtn" aria-label="Switch language / Changer de langue"><span class="on">EN</span>&nbsp;/&nbsp;<span class="off">FR</span></button>
+        <button class="tbtn theme-btn" id="themeBtn" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path class="t-moon" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
       <a href="#top" class="nav-crest" aria-label="Killian Gerard — home">
         <svg viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
           <path d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="#17150F" stroke="#CFCBBF" stroke-width="1.4"/>
@@ -346,15 +393,15 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <div class="masthead anim a1"><span class="edge">London, UK</span><span class="mid">Portfolio</span><span class="edge edge2">Anno MMXXVI</span></div>
-    <p class="eyebrow anim a2">Mechatronics Engineering · Machine Learning · London</p>
+    <div class="masthead anim a1"><span class="edge" data-fr="Londres, R.-U.">London, UK</span><span class="mid">Portfolio</span><span class="edge edge2" data-fr="Anno MMXXVI">Anno MMXXVI</span></div>
+    <p class="eyebrow anim a2" data-fr="Ingénierie mécatronique · Machine learning · Londres">Mechatronics Engineering · Machine Learning · London</p>
     <h1 class="anim a2">Killian<br><span class="last">Gerard</span></h1>
-    <p class="hero-nat anim a2">Dual French &amp; British national · Trilingual</p>
-    <p class="hero-lead anim a3">I am a Mechatronics&nbsp;BEng graduate who likes taking an idea all the way to a working build. My work runs from embedded robotics and high-speed-rail vibration analysis to <span class="serif">machine-learning</span> models that forecast how long an asset will last. I spent two summers inside live energy operations, and this September I begin an MSc in Fintech at <span class="serif">IE Madrid</span>.</p>
+    <p class="hero-nat anim a2" data-fr="Binational franco-britannique · Trilingue">Dual French &amp; British national · Trilingual</p>
+    <p class="hero-lead anim a3" data-fr="Je suis diplômé d'un BEng en mécatronique et j'aime mener une idée jusqu'à un prototype qui fonctionne. Mes projets vont de la robotique embarquée et de l'analyse vibratoire des trains à grande vitesse aux modèles de machine learning qui prédisent la durée de vie d'un équipement. J'ai passé deux étés au cœur d'opérations énergétiques en activité, et en septembre je commence un MSc en Fintech à IE Madrid.">I am a Mechatronics&nbsp;BEng graduate who likes taking an idea all the way to a working build. My work runs from embedded robotics and high-speed-rail vibration analysis to <span class="serif">machine-learning</span> models that forecast how long an asset will last. I spent two summers inside live energy operations, and this September I begin an MSc in Fintech at <span class="serif">IE Madrid</span>.</p>
     <div class="hero-cta anim a4">
-      <a href="#projects" class="btn">View Projects</a>
-      <a href="assets/Killian-Gerard-Portfolio.pdf" class="btn ghost" target="_blank">Download Portfolio</a>
-      <a href="assets/Killian-Gerard-CV.pdf" class="btn ghost" target="_blank">Download CV</a>
+      <a href="#projects" class="btn" data-fr="Voir les projets">View Projects</a>
+      <a href="assets/Killian-Gerard-Portfolio.pdf" class="btn ghost" target="_blank" data-fr="Télécharger le portfolio">Download Portfolio</a>
+      <a href="assets/Killian-Gerard-CV.pdf" class="btn ghost" target="_blank" data-fr="Télécharger le CV">Download CV</a>
     </div>
   </div>
 </section>
@@ -362,22 +409,35 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-head"><h2>Engineering, end to end</h2><span class="idx">01 · About</span></div>
+    <div class="sec-head"><h2 data-fr="L'ingénierie, de bout en bout">Engineering, end to end</h2><span class="idx" data-fr="01 · À propos">01 · About</span></div>
     <div class="about-grid">
       <div>
-        <p>I am a <span class="serif">Mechatronics Engineering</span> graduate from Lancaster University with a foundation in engineering first principles and a habit of taking projects from concept to a working build, covering mechanical design, embedded control, simulation and testing.</p>
-        <p>My most rigorous work sits at the meeting point of hardware and data: an <span class="serif">LSTM model</span> predicting the remaining useful life of lithium-ion batteries to within a fraction of a percent, and a vibration-analysis suspension concept for high-speed rail with machine-learning anomaly detection. Alongside my degree I completed two internships in live energy operations: <span class="serif">Vitol</span> on UK gas turbines, then <span class="serif">VIVO Energy (Shell licensee)</span> on LPG and oil infrastructure in Morocco, where I learned CAPEX/OPEX modelling and demand forecasting in the field.</p>
-        <p>That blend of engineering discipline and quantitative modelling is what draws me toward <span class="serif">quantitative finance</span>, which I will pursue formally through IE Madrid's MSc in Fintech.</p>
+        <p data-fr="Je suis diplômé en ingénierie mécatronique de l'université de Lancaster, avec de solides bases dans les fondamentaux de l'ingénierie et l'habitude de mener un projet du concept jusqu'à un prototype fonctionnel : conception mécanique, contrôle embarqué, simulation et essais.">I am a <span class="serif">Mechatronics Engineering</span> graduate from Lancaster University with a foundation in engineering first principles and a habit of taking projects from concept to a working build, covering mechanical design, embedded control, simulation and testing.</p>
+        <p data-fr="Mon travail le plus exigeant se situe à la rencontre du matériel et des données : un modèle LSTM qui prédit la durée de vie restante de batteries lithium-ion à une fraction de pourcent près, et un concept de suspension à analyse vibratoire pour train à grande vitesse, avec détection d'anomalies par machine learning. En parallèle de mes études, j'ai réalisé deux stages dans des opérations énergétiques en activité : Vitol sur des turbines à gaz au Royaume-Uni, puis VIVO Energy (licencié Shell) sur des infrastructures GPL et pétrolières au Maroc, où j'ai appris la modélisation CAPEX/OPEX et la prévision de la demande sur le terrain.">My most rigorous work sits at the meeting point of hardware and data: an <span class="serif">LSTM model</span> predicting the remaining useful life of lithium-ion batteries to within a fraction of a percent, and a vibration-analysis suspension concept for high-speed rail with machine-learning anomaly detection. Alongside my degree I completed two internships in live energy operations: <span class="serif">Vitol</span> on UK gas turbines, then <span class="serif">VIVO Energy (Shell licensee)</span> on LPG and oil infrastructure in Morocco, where I learned CAPEX/OPEX modelling and demand forecasting in the field.</p>
+        <p data-fr="Ce mélange de rigueur d'ingénieur et de modélisation quantitative est ce qui m'attire vers la finance quantitative, que je vais poursuivre formellement à travers le MSc Fintech d'IE Madrid.">That blend of engineering discipline and quantitative modelling is what draws me toward <span class="serif">quantitative finance</span>, which I will pursue formally through IE Madrid's MSc in Fintech.</p>
       </div>
       <dl class="glance">
-        <div class="eyebrow">At a glance</div>
-        <dt>Focus</dt><dd>Machine learning &amp; mechatronics</dd>
-        <dt>Degree</dt><dd>Mechatronics Engineering BEng (Hons)</dd>
-        <dt>University</dt><dd>Lancaster University</dd>
-        <dt>Next</dt><dd>MSc Fintech, IE Madrid (Sept 2026)</dd>
-        <dt>Languages</dt><dd>French &amp; English (native), Spanish (proficient)</dd>
-        <dt>Location</dt><dd>London, United Kingdom</dd>
+        <div class="eyebrow" data-fr="En bref">At a glance</div>
+        <dt data-fr="Domaine">Focus</dt><dd data-fr="Machine learning et mécatronique">Machine learning &amp; mechatronics</dd>
+        <dt data-fr="Diplôme">Degree</dt><dd data-fr="BEng (Hons) en ingénierie mécatronique">Mechatronics Engineering BEng (Hons)</dd>
+        <dt data-fr="Université">University</dt><dd data-fr="Université de Lancaster">Lancaster University</dd>
+        <dt data-fr="Prochaine étape">Next</dt><dd data-fr="MSc Fintech, IE Madrid (sept. 2026)">MSc Fintech, IE Madrid (Sept 2026)</dd>
+        <dt data-fr="Langues">Languages</dt><dd data-fr="Français et anglais (langues maternelles), espagnol (courant)">French &amp; English (native), Spanish (proficient)</dd>
+        <dt data-fr="Localisation">Location</dt><dd data-fr="Londres, Royaume-Uni">London, United Kingdom</dd>
       </dl>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-sec">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="num" data-target="0.07" data-dec="2" data-prefix="&lt; " data-suffix="%">&lt; 0.07%</div><div class="lbl" data-fr="Erreur de prévision de capacité (MAPE)">Battery forecast error (MAPE)</div></div>
+      <div class="stat"><div class="num" data-target="800" data-dec="0" data-prefix="~" data-suffix=" MW">~800 MW</div><div class="lbl" data-fr="Production de turbines suivie">Gas-turbine output monitored</div></div>
+      <div class="stat"><div class="num" data-target="80" data-dec="0" data-suffix="+">80+</div><div class="lbl" data-fr="Étudiants encadrés">Students mentored</div></div>
+      <div class="stat"><div class="num" data-target="3" data-dec="0">3</div><div class="lbl" data-fr="Langues parlées">Languages spoken</div></div>
+      <div class="stat"><div class="num" data-target="5" data-dec="0">5</div><div class="lbl" data-fr="Projets d'ingénierie">Engineering projects</div></div>
     </div>
   </div>
 </section>
@@ -385,18 +445,25 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="wrap">
-    <div class="sec-head"><h2>Selected work</h2><span class="idx">02 · Projects</span></div>
+    <div class="sec-head"><h2 data-fr="Travaux choisis">Selected work</h2><span class="idx" data-fr="02 · Projets">02 · Projects</span></div>
+
+    <div class="filters" id="filters">
+      <button class="chip active" data-cat="all" data-fr="Tous">All</button>
+      <button class="chip" data-cat="ml" data-fr="Machine learning">Machine Learning</button>
+      <button class="chip" data-cat="robotics" data-fr="Robotique">Robotics</button>
+      <button class="chip" data-cat="cad" data-fr="CAO et mécanique">CAD &amp; Mechanical</button>
+    </div>
 
     <!-- P1 Battery ML -->
-    <article class="project">
+    <article class="project" data-cat="ml">
       <div class="p-num">01</div>
       <div class="p-body">
         <div class="p-head">
-          <div class="p-meta"><span>Third-year project</span><span>Individual</span><span>2025</span></div>
+          <div class="p-meta"><span data-fr="Projet de 3e année">Third-year project</span><span data-fr="Individuel">Individual</span><span>2025</span></div>
           <h3>Machine Learning for the <em>Remaining Useful Life</em> of Lithium-Ion Batteries</h3>
         </div>
-        <a class="p-repo" href="https://github.com/killiang27/li-ion-battery-rul-prediction" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View repository</a>
-        <p class="p-desc">I trained a two-layer LSTM on the Stanford/MIT battery-discharge dataset to predict how capacity fades over time and to catch the knee-point where decline suddenly accelerates, landing a mean absolute percentage error under 0.07%. I also built a Gradio interface for tuning the sequence length, epochs and train/test split, with guards so the model never leaks data across battery boundaries. The same forecasting idea carries straight over to risk and asset-default modelling.</p>
+        <a class="p-repo" href="https://github.com/killiang27/li-ion-battery-rul-prediction" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-fr="Voir le dépôt">View repository</span></a>
+        <p class="p-desc" data-fr="J'ai entraîné un LSTM à deux couches sur le jeu de données de décharge de batteries Stanford/MIT pour prédire la perte de capacité au fil du temps et repérer le point de rupture où le déclin s'accélère soudainement, avec une erreur absolue moyenne en pourcentage inférieure à 0,07 %. J'ai aussi développé une interface Gradio pour régler la longueur de séquence, les epochs et la répartition entraînement/test, avec des garde-fous empêchant toute fuite de données entre batteries. La même approche de prévision se transpose directement à la modélisation du risque et du défaut d'actifs.">I trained a two-layer LSTM on the Stanford/MIT battery-discharge dataset to predict how capacity fades over time and to catch the knee-point where decline suddenly accelerates, landing a mean absolute percentage error under 0.07%. I also built a Gradio interface for tuning the sequence length, epochs and train/test split, with guards so the model never leaks data across battery boundaries. The same forecasting idea carries straight over to risk and asset-default modelling.</p>
         <div class="p-tags">
           <span class="tag">Python</span><span class="tag">TensorFlow / Keras</span><span class="tag">LSTM</span><span class="tag">Time-series</span><span class="tag">Gradio</span>
         </div>
@@ -412,15 +479,15 @@
     </article>
 
     <!-- P2 Vibration -->
-    <article class="project">
+    <article class="project" data-cat="ml cad">
       <div class="p-num">02</div>
       <div class="p-body">
         <div class="p-head">
-          <div class="p-meta"><span>Third-year project</span><span>Group of 6</span><span>2025</span></div>
+          <div class="p-meta"><span data-fr="Projet de 3e année">Third-year project</span><span data-fr="Groupe de 6">Group of 6</span><span>2025</span></div>
           <h3>Vibration Analysis: <em>High-Speed-Rail Suspension</em> with ML Anomaly Detection</h3>
         </div>
-        <a class="p-repo" href="https://github.com/killiang27/train-vibration-anomaly-detection" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>View repository</a>
-        <p class="p-desc">Working in a group of six, I helped design a semi-active suspension for a high-speed train: variable-stiffness air springs paired with a hydraulic actuator and a secondary damper, all modelled on quarter-car physics. I then built an LSTM autoencoder that reconstructs the vibration signal and watches the reconstruction error for anomalies. When it confirms a genuine fault, the system tells the train to slow down on its own.</p>
+        <a class="p-repo" href="https://github.com/killiang27/train-vibration-anomaly-detection" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-fr="Voir le dépôt">View repository</span></a>
+        <p class="p-desc" data-fr="Au sein d'un groupe de six, j'ai participé à la conception d'une suspension semi-active pour train à grande vitesse : des ressorts pneumatiques à raideur variable associés à un actionneur hydraulique et un amortisseur secondaire, le tout modélisé sur la physique du quart de véhicule. J'ai ensuite développé un autoencodeur LSTM qui reconstruit le signal vibratoire et surveille l'erreur de reconstruction pour détecter les anomalies. Lorsqu'une véritable défaillance est confirmée, le système ordonne de lui-même au train de ralentir.">Working in a group of six, I helped design a semi-active suspension for a high-speed train: variable-stiffness air springs paired with a hydraulic actuator and a secondary damper, all modelled on quarter-car physics. I then built an LSTM autoencoder that reconstructs the vibration signal and watches the reconstruction error for anomalies. When it confirms a genuine fault, the system tells the train to slow down on its own.</p>
         <div class="p-tags">
           <span class="tag">Quarter-car model</span><span class="tag">LSTM autoencoder</span><span class="tag">Signal processing</span><span class="tag">MEMS / piezo sensing</span>
         </div>
@@ -436,14 +503,14 @@
     </article>
 
     <!-- P3 Ping pong robot -->
-    <article class="project">
+    <article class="project" data-cat="robotics">
       <div class="p-num">03</div>
       <div class="p-body">
         <div class="p-head">
-          <div class="p-meta"><span>Second-year project</span><span>Team</span><span>2024</span></div>
+          <div class="p-meta"><span data-fr="Projet de 2e année">Second-year project</span><span data-fr="Équipe">Team</span><span>2024</span></div>
           <h3>Line-Following Robot with a <em>Dual-Barrel Ping-Pong Cannon</em></h3>
         </div>
-        <p class="p-desc">This was a group project. The team built an autonomous robot that tracks a line with LDR sensors and fires ping-pong balls at a target once it has covered a set distance. The firing mechanism uses two 3D-printed barrels, an elastic-band ball hammer and a servo that releases a string trigger, so the two balls launch at different heights.</p>
+        <p class="p-desc" data-fr="C'était un projet de groupe. L'équipe a construit un robot autonome qui suit une ligne grâce à des capteurs LDR et tire des balles de ping-pong sur une cible après avoir parcouru une distance définie. Le mécanisme de tir utilise deux canons imprimés en 3D, un marteau à élastique et un servomoteur qui libère une gâchette à ficelle, de sorte que les deux balles partent à des hauteurs différentes.">This was a group project. The team built an autonomous robot that tracks a line with LDR sensors and fires ping-pong balls at a target once it has covered a set distance. The firing mechanism uses two 3D-printed barrels, an elastic-band ball hammer and a servo that releases a string trigger, so the two balls launch at different heights.</p>
         <div class="p-tags">
           <span class="tag">Embedded C / Arduino</span><span class="tag">LDR line detection</span><span class="tag">Servo actuation</span><span class="tag">3D printing</span>
         </div>
@@ -459,14 +526,14 @@
     </article>
 
     <!-- P4 IMechE car -->
-    <article class="project">
+    <article class="project" data-cat="robotics cad">
       <div class="p-num">04</div>
       <div class="p-body">
         <div class="p-head">
-          <div class="p-meta"><span>First-year project</span><span>IMechE</span><span>2023</span></div>
+          <div class="p-meta"><span data-fr="Projet de 1re année">First-year project</span><span>IMechE</span><span>2023</span></div>
           <h3>IMechE Autonomous <em>Wall-Strike &amp; Return</em> Robot Car</h3>
         </div>
-        <p class="p-desc">This was a group project for the IMechE challenge. The team designed and built a robot car that drives into a wall and then reverses back to exactly where it started. Getting it consistent came down to careful distance calibration and a simple control sequence the car could repeat every run.</p>
+        <p class="p-desc" data-fr="C'était un projet de groupe pour le défi IMechE. L'équipe a conçu et construit une voiture-robot qui fonce dans un mur puis recule exactement à son point de départ. La fiabilité reposait sur un calibrage soigné de la distance et une séquence de commande simple, répétable à chaque essai.">This was a group project for the IMechE challenge. The team designed and built a robot car that drives into a wall and then reverses back to exactly where it started. Getting it consistent came down to careful distance calibration and a simple control sequence the car could repeat every run.</p>
         <div class="p-tags">
           <span class="tag">SolidWorks</span><span class="tag">DPDT control</span><span class="tag">Motor control</span><span class="tag">Mechanical design</span>
         </div>
@@ -484,14 +551,14 @@
     </article>
 
     <!-- P5 Wind turbine -->
-    <article class="project">
+    <article class="project" data-cat="cad">
       <div class="p-num">05</div>
       <div class="p-body">
         <div class="p-head">
-          <div class="p-meta"><span>First-year project</span><span>Group</span><span>2023</span></div>
+          <div class="p-meta"><span data-fr="Projet de 1re année">First-year project</span><span data-fr="Groupe">Group</span><span>2023</span></div>
           <h3>Scalable Miniature <em>Wind-Turbine Aerofoil</em></h3>
         </div>
-        <p class="p-desc">We designed, modelled and wind-tunnel tested a scalable aerofoil blade built to pull as much power as possible out of the airflow. The geometry came together in JavaFoil and SolidWorks, then we measured current, voltage and power across different fan speeds to work out the coefficient of performance and tip-speed ratio, along with where the experiment started losing accuracy.</p>
+        <p class="p-desc" data-fr="Nous avons conçu, modélisé et testé en soufflerie une pale à échelle variable, pensée pour extraire le maximum de puissance du flux d'air. La géométrie a été réalisée sous JavaFoil et SolidWorks, puis nous avons mesuré courant, tension et puissance à différents régimes de ventilateur pour calculer le coefficient de performance et le rapport de vitesse en bout de pale, ainsi que les sources de perte de précision.">We designed, modelled and wind-tunnel tested a scalable aerofoil blade built to pull as much power as possible out of the airflow. The geometry came together in JavaFoil and SolidWorks, then we measured current, voltage and power across different fan speeds to work out the coefficient of performance and tip-speed ratio, along with where the experiment started losing accuracy.</p>
         <div class="p-tags">
           <span class="tag">SolidWorks</span><span class="tag">JavaFoil</span><span class="tag">Wind-tunnel testing</span><span class="tag">Aerodynamics</span>
         </div>
@@ -513,96 +580,96 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head"><h2>Experience &amp; education</h2><span class="idx">03 · Curriculum Vitae</span></div>
+    <div class="sec-head"><h2 data-fr="Expérience et formation">Experience &amp; education</h2><span class="idx" data-fr="03 · Curriculum vitæ">03 · Curriculum Vitae</span></div>
 
     <div class="xp-block">
-      <div class="eyebrow">Professional experience</div>
+      <div class="eyebrow" data-fr="Expérience professionnelle">Professional experience</div>
       <div class="xp">
         <div class="when">Jul – Aug 2025</div>
         <div>
-          <h4>Engineering Internship</h4>
-          <div class="org">VIVO Energy (Shell Licensee) · Morocco</div>
+          <h4 data-fr="Stage d'ingénierie">Engineering Internship</h4>
+          <div class="org" data-fr="VIVO Energy (licencié Shell) · Maroc">VIVO Energy (Shell Licensee) · Morocco</div>
           <ul>
-            <li>Shadowed engineers across 3+ LPG and oil-infrastructure disciplines, supporting project development and management.</li>
-            <li>Learned end-to-end CAPEX/OPEX modelling, covering Excel model structure, oil-demand forecasting and tank-reserve analytics with fail-safe systems.</li>
-            <li>Monitored oil-tank construction and welding under strict safety regulation; redesigned the division's engineer-onboarding deck for the learning portal.</li>
+            <li data-fr="Accompagnement d'ingénieurs dans plus de trois disciplines liées aux infrastructures GPL et pétrolières, en appui au développement et à la gestion de projet.">Shadowed engineers across 3+ LPG and oil-infrastructure disciplines, supporting project development and management.</li>
+            <li data-fr="Apprentissage de la modélisation CAPEX/OPEX de bout en bout : structure des modèles Excel, prévision de la demande pétrolière et analyse des réserves de stockage, avec systèmes de sécurité.">Learned end-to-end CAPEX/OPEX modelling, covering Excel model structure, oil-demand forecasting and tank-reserve analytics with fail-safe systems.</li>
+            <li data-fr="Suivi de la construction et du soudage de réservoirs sous réglementation de sécurité stricte ; refonte du support d'intégration des ingénieurs de la division pour le portail de formation.">Monitored oil-tank construction and welding under strict safety regulation; redesigned the division's engineer-onboarding deck for the learning portal.</li>
           </ul>
         </div>
       </div>
       <div class="xp">
         <div class="when">Jul – Aug 2022</div>
         <div>
-          <h4>Engineering Shadowing</h4>
-          <div class="org">VPI Damhead Creek, Vitol Group · United Kingdom</div>
+          <h4 data-fr="Observation en ingénierie">Engineering Shadowing</h4>
+          <div class="org" data-fr="VPI Damhead Creek, groupe Vitol · Royaume-Uni">VPI Damhead Creek, Vitol Group · United Kingdom</div>
           <ul>
-            <li>Shadowed real-time performance of Mitsubishi 701F3 gas turbines (~800 MW combined), learning operation and monitoring of large gas-and-steam systems.</li>
-            <li>Adjusted operational output against regional daily demand; supported procurement administration and formal reporting.</li>
+            <li data-fr="Observation en temps réel du fonctionnement de turbines à gaz Mitsubishi 701F3 (~800 MW au total) et découverte de l'exploitation et de la surveillance de grands systèmes gaz-vapeur.">Shadowed real-time performance of Mitsubishi 701F3 gas turbines (~800 MW combined), learning operation and monitoring of large gas-and-steam systems.</li>
+            <li data-fr="Ajustement de la production selon la demande quotidienne régionale ; appui à la gestion des achats et à la rédaction de rapports.">Adjusted operational output against regional daily demand; supported procurement administration and formal reporting.</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="xp-block">
-      <div class="eyebrow">Leadership</div>
+      <div class="eyebrow" data-fr="Engagement et responsabilités">Leadership</div>
       <div class="xp">
         <div class="when">2024 – 2026</div>
         <div>
-          <h4>Vice-President</h4>
-          <div class="org">Engineering Peer-Assisted Learning Society (EPALS) · Lancaster</div>
+          <h4 data-fr="Vice-président">Vice-President</h4>
+          <div class="org" data-fr="Société de tutorat en ingénierie (EPALS) · Lancaster">Engineering Peer-Assisted Learning Society (EPALS) · Lancaster</div>
           <ul>
-            <li>Organised peer-taught sessions for a cohort of 80+ students, overseeing quality control and teaching content.</li>
-            <li>Partnered with the MedTech society to introduce suturing practice on silicone organ models and taught CAD to applicants.</li>
+            <li data-fr="Organisation de séances de tutorat entre pairs pour une promotion de plus de 80 étudiants, avec contrôle qualité et supervision des contenus.">Organised peer-taught sessions for a cohort of 80+ students, overseeing quality control and teaching content.</li>
+            <li data-fr="Collaboration avec l'association MedTech pour introduire la pratique de suture sur modèles d'organes en silicone, et enseignement de la CAO aux candidats.">Partnered with the MedTech society to introduce suturing practice on silicone organ models and taught CAD to applicants.</li>
           </ul>
         </div>
       </div>
       <div class="xp">
         <div class="when">2016 – 2021</div>
         <div>
-          <h4>Corporal, Royal Air Force (CCF) Cadets</h4>
-          <div class="org">Leadership, navigation, first aid and flight training</div>
+          <h4 data-fr="Caporal, cadets de la Royal Air Force (CCF)">Corporal, Royal Air Force (CCF) Cadets</h4>
+          <div class="org" data-fr="Leadership, navigation, premiers secours et pilotage">Leadership, navigation, first aid and flight training</div>
           <ul>
-            <li>Reached Corporal; trained in navigation, drill, first aid and flight (single-prop aircraft, simulators, Chinook/Puma helicopters).</li>
+            <li data-fr="Promu caporal ; formé à la navigation, à l'ordre serré, aux premiers secours et au pilotage (avions monomoteurs, simulateurs, hélicoptères Chinook/Puma).">Reached Corporal; trained in navigation, drill, first aid and flight (single-prop aircraft, simulators, Chinook/Puma helicopters).</li>
           </ul>
         </div>
       </div>
       <div class="xp">
         <div class="when">2017 – 2018</div>
         <div>
-          <h4>Duke of Edinburgh's Award: Silver &amp; Bronze</h4>
-          <div class="org">Including a self-sufficient 50+ km, three-day expedition</div>
+          <h4 data-fr="Prix du Duc d'Édimbourg : argent et bronze">Duke of Edinburgh's Award: Silver &amp; Bronze</h4>
+          <div class="org" data-fr="Dont une expédition autonome de plus de 50 km sur trois jours">Including a self-sufficient 50+ km, three-day expedition</div>
         </div>
       </div>
       <div class="xp">
         <div class="when">Music</div>
         <div>
-          <h4>Piano &amp; Violin</h4>
-          <div class="org">Graded examinations: Piano Grade 5 and Violin Grade 4 completed</div>
+          <h4 data-fr="Piano et violon">Piano &amp; Violin</h4>
+          <div class="org" data-fr="Examens de musique : piano niveau 5 et violon niveau 4 validés">Graded examinations: Piano Grade 5 and Violin Grade 4 completed</div>
         </div>
       </div>
     </div>
 
     <div class="xp-block">
-      <div class="eyebrow">Education</div>
+      <div class="eyebrow" data-fr="Formation">Education</div>
       <div class="xp">
         <div class="when">2026 →</div>
-        <div><h4>IE University, Madrid</h4><div class="org">MSc Fintech, commencing September 2026</div></div>
+        <div><h4>IE University, Madrid</h4><div class="org" data-fr="MSc Fintech, début septembre 2026">MSc Fintech, commencing September 2026</div></div>
       </div>
       <div class="xp">
         <div class="when">2023 – 2026</div>
-        <div><h4>Lancaster University</h4><div class="org">Mechatronics Engineering BEng (Hons)</div></div>
+        <div><h4>Lancaster University</h4><div class="org" data-fr="BEng (Hons) en ingénierie mécatronique">Mechatronics Engineering BEng (Hons)</div></div>
       </div>
       <div class="xp">
         <div class="when">2022 – 2023</div>
-        <div><h4>University of Nottingham</h4><div class="org">Engineering: Physics with Astronomy &amp; Foundation Year</div></div>
+        <div><h4>University of Nottingham</h4><div class="org" data-fr="Ingénierie : physique avec astronomie et année préparatoire">Engineering: Physics with Astronomy &amp; Foundation Year</div></div>
       </div>
       <div class="xp">
         <div class="when">2015 – 2021</div>
-        <div><h4>Colfe's School</h4><div class="org">London, UK. Private secondary &amp; sixth form (A-Levels: Maths, Physics, Spanish)</div></div>
+        <div><h4>Colfe's School</h4><div class="org" data-fr="Londres, R.-U. Secondaire privé et sixth form (A-Levels : maths, physique, espagnol)">London, UK. Private secondary &amp; sixth form (A-Levels: Maths, Physics, Spanish)</div></div>
       </div>
     </div>
 
     <div class="xp-block">
-      <div class="eyebrow">Technical skills</div>
+      <div class="eyebrow" data-fr="Compétences techniques">Technical skills</div>
       <div class="skills">
         <span>Python</span><span>Pandas · NumPy</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>Matplotlib</span><span>Gradio</span><span>MATLAB</span><span>C / C++ (embedded)</span><span>Machine learning</span><span>Time-series analysis</span><span>Predictive modelling</span><span>SolidWorks</span><span>AutoCAD</span><span>JavaFoil</span><span>CAPEX / OPEX modelling</span><span>Technical reporting</span>
       </div>
@@ -613,9 +680,9 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap contact">
-    <p class="eyebrow">Get in touch</p>
-    <h2>Let's build <em>something</em></h2>
-    <p class="lead">I'm open to conversations across engineering, machine learning, fintech and quantitative finance. Email or LinkedIn is the best way to reach me.</p>
+    <p class="eyebrow" data-fr="Restons en contact">Get in touch</p>
+    <h2 data-fr="Construisons quelque chose">Let's build <em>something</em></h2>
+    <p class="lead" data-fr="Je suis ouvert aux échanges autour de l'ingénierie, du machine learning, de la fintech et de la finance quantitative. L'e-mail et LinkedIn sont les meilleurs moyens de me joindre.">I'm open to conversations across engineering, machine learning, fintech and quantitative finance. Email or LinkedIn is the best way to reach me.</p>
 
     <div class="card">
       <svg class="card-crest" viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
@@ -623,20 +690,20 @@
         <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
         <text x="32" y="42" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
       </svg>
-      <div class="c-eyebrow">Mechatronics Engineering</div>
+      <div class="c-eyebrow" data-fr="Ingénierie mécatronique">Mechatronics Engineering</div>
       <div class="c-name">Killian <em>Gerard</em></div>
-      <div class="c-role">Machine Learning · Embedded Systems · Fintech</div>
+      <div class="c-role" data-fr="Machine learning · Systèmes embarqués · Fintech">Machine Learning · Embedded Systems · Fintech</div>
       <div class="c-rule"></div>
       <dl>
-        <dt>Email</dt><dd><a href="mailto:killian22.gerard@gmail.com">killian22.gerard@gmail.com</a></dd>
+        <dt data-fr="E-mail">Email</dt><dd><a href="mailto:killian22.gerard@gmail.com">killian22.gerard@gmail.com</a></dd>
         <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/killian-g%C3%A9rard-362aba239" target="_blank">linkedin.com/in/killian-gerard</a></dd>
         <dt>GitHub</dt><dd><a href="https://github.com/killiang27" target="_blank">github.com/killiang27</a></dd>
-        <dt>Based in</dt><dd>London, United Kingdom</dd>
+        <dt data-fr="Basé à">Based in</dt><dd data-fr="Londres, Royaume-Uni">London, United Kingdom</dd>
       </dl>
     </div>
 
     <div class="contact-links">
-      <a href="mailto:killian22.gerard@gmail.com" class="btn">Email me</a>
+      <a href="mailto:killian22.gerard@gmail.com" class="btn" data-fr="M'écrire">Email me</a>
       <a href="https://www.linkedin.com/in/killian-g%C3%A9rard-362aba239" class="btn ghost" target="_blank">LinkedIn</a>
       <a href="https://github.com/killiang27" class="btn ghost" target="_blank">GitHub</a>
     </div>
@@ -652,7 +719,7 @@
         <text x="32" y="42" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
       </svg>
     </a>
-    <p>Killian Gerard · Mechatronics Engineering Portfolio · MMXXVI</p>
+    <p data-fr="Killian Gerard · Portfolio d'ingénierie mécatronique · MMXXVI">Killian Gerard · Mechatronics Engineering Portfolio · MMXXVI</p>
   </div>
 </footer>
 
@@ -700,6 +767,61 @@
   const closeLb=()=>{lb.classList.remove('open');document.body.style.overflow='';};
   lb.addEventListener('click',e=>{if(e.target!==lbImg)closeLb();});
   addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
+
+  // ---- Dark (ink) mode ----
+  const themeBtn=document.getElementById('themeBtn');
+  const applyTheme=t=>{document.body.classList.toggle('dark',t==='dark');
+    const mc=document.querySelector('meta[name=theme-color]'); if(mc) mc.setAttribute('content', t==='dark' ? '#15130F' : '#F4F0E6');};
+  let theme=localStorage.getItem('theme')|| (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  applyTheme(theme);
+  themeBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';applyTheme(theme);localStorage.setItem('theme',theme);});
+
+  // ---- Stat counters ----
+  let countersDone=false, lang;
+  function runCounters(instant){
+    document.querySelectorAll('.stat .num').forEach(el=>{
+      const tgt=parseFloat(el.dataset.target), dec=+el.dataset.dec||0,
+            pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+      const fmt=v=>pre+v.toLocaleString(lang==='fr'?'fr-FR':'en-GB',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;
+      if(instant){el.textContent=fmt(tgt);return;}
+      const dur=1100, t0=performance.now();
+      const step=now=>{const k=Math.min(1,(now-t0)/dur);const e=1-Math.pow(1-k,3);
+        el.textContent=fmt(tgt*e); if(k<1)requestAnimationFrame(step); else el.textContent=fmt(tgt);};
+      requestAnimationFrame(step);
+    });
+  }
+
+  // ---- Language EN / FR ----
+  const frEls=[...document.querySelectorAll('[data-fr]')];
+  frEls.forEach(el=>el.dataset.en=el.innerHTML);
+  const langBtn=document.getElementById('langBtn');
+  const paintLang=l=>{langBtn.innerHTML = l==='fr'
+    ? '<span class="off">EN</span>&nbsp;/&nbsp;<span class="on">FR</span>'
+    : '<span class="on">EN</span>&nbsp;/&nbsp;<span class="off">FR</span>';};
+  const setLang=l=>{
+    document.documentElement.lang=l;
+    frEls.forEach(el=>{ if(l==='fr') el.textContent=el.dataset.fr; else el.innerHTML=el.dataset.en; });
+    paintLang(l); localStorage.setItem('lang',l);
+    if(countersDone) runCounters(true);
+  };
+  lang=localStorage.getItem('lang')||'en';
+  if(lang==='fr') setLang('fr'); else paintLang('en');
+  langBtn.addEventListener('click',()=>{lang=lang==='fr'?'en':'fr';setLang(lang);});
+
+  // initialise counters to 0, animate on scroll-in
+  document.querySelectorAll('.stat .num').forEach(el=>{const pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',dec=+el.dataset.dec||0;el.textContent=pre+(0).toFixed(dec)+suf;});
+  const statSec=document.querySelector('.stats-sec');
+  if(statSec){const co=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting&&!countersDone){countersDone=true;runCounters(false);co.unobserve(e.target);}}),{threshold:.4});co.observe(statSec);}
+
+  // ---- Project filters ----
+  const chips=[...document.querySelectorAll('.chip')];
+  const cards=[...document.querySelectorAll('.project')];
+  chips.forEach(ch=>ch.addEventListener('click',()=>{
+    chips.forEach(c=>c.classList.remove('active')); ch.classList.add('active');
+    const cat=ch.dataset.cat;
+    cards.forEach(card=>{const cats=(card.dataset.cat||'').split(' ');
+      card.classList.toggle('hide', cat!=='all' && !cats.includes(cat));});
+  }));
 </script>
 </body>
 </html>
