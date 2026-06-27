@@ -772,7 +772,7 @@
   const themeBtn=document.getElementById('themeBtn');
   const applyTheme=t=>{document.body.classList.toggle('dark',t==='dark');
     const mc=document.querySelector('meta[name=theme-color]'); if(mc) mc.setAttribute('content', t==='dark' ? '#15130F' : '#F4F0E6');};
-  let theme=localStorage.getItem('theme')|| (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  let theme=localStorage.getItem('theme')||'light';
   applyTheme(theme);
   themeBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';applyTheme(theme);localStorage.setItem('theme',theme);});
 
