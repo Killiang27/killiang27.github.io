@@ -2,7 +2,7 @@
 
 Personal portfolio site for **Killian Gerard**, a Mechatronics Engineering graduate
 working across machine learning, embedded robotics and high-speed-rail vibration
-analysis, heading to IE Madrid for an MSc in Fintech.
+analysis, heading into an MSc in Fintech.
 
 **Live site:** https://killiang27.github.io
 
