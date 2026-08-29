@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Killian Gerard — Mechatronics Engineering Portfolio</title>
-<meta name="description" content="Portfolio and CV of Killian Gerard — Mechatronics Engineering graduate with hands-on machine learning, energy-sector internships, and a path into fintech and quantitative finance." />
+<title>Killian Gerard · Mechatronics Engineering Portfolio</title>
+<meta name="description" content="Portfolio and CV of Killian Gerard, a Mechatronics Engineering graduate with hands-on machine learning, energy-sector internships, and a path into fintech and quantitative finance." />
 <meta name="theme-color" content="#F4F0E6" />
 <link rel="canonical" href="https://killiang27.github.io/" />
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Killian Gerard — Mechatronics Engineering Portfolio" />
+<meta property="og:title" content="Killian Gerard · Mechatronics Engineering Portfolio" />
 <meta property="og:description" content="Mechatronics Engineering graduate. Machine learning, embedded robotics and high-speed-rail vibration analysis. Heading to IE Madrid for an MSc in Fintech." />
 <meta property="og:url" content="https://killiang27.github.io/" />
 <meta property="og:image" content="https://killiang27.github.io/assets/og-card.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Killian Gerard — Mechatronics Engineering Portfolio" />
+<meta name="twitter:title" content="Killian Gerard · Mechatronics Engineering Portfolio" />
 <meta name="twitter:description" content="Machine learning, embedded robotics and high-speed-rail vibration analysis. Heading to IE Madrid for an MSc in Fintech." />
 <meta name="twitter:image" content="https://killiang27.github.io/assets/og-card.png" />
 
@@ -60,6 +60,7 @@
     --silver:#9A9A93;
     --silver-line:#CFCBBF;
     --graphite:#6B6E70;
+    --gold:#B7A26B;
     --max:1180px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -75,7 +76,7 @@
   }
   ::selection{background:var(--ink);color:var(--ivory)}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 40px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 40px;position:relative;z-index:1}
 
   /* ---------- Typographic helpers ---------- */
   .eyebrow{
@@ -175,7 +176,8 @@
   }
   .btn:hover{background:var(--ink);color:var(--ivory)}
   .btn.ghost{border-color:var(--silver-line);color:var(--ink-soft)}
-  .btn.ghost:hover{border-color:var(--ink);background:transparent;color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--ink);background:rgba(23,21,15,.05);color:var(--ink)}
+  body.dark .btn.ghost:hover{background:rgba(241,236,223,.08)}
 
   /* ---------- Section frame ---------- */
   section{padding:96px 0}
@@ -192,14 +194,9 @@
   .glance{border-left:1px solid var(--silver-line);padding-left:30px}
 
   /* ---------- Projects ---------- */
-  .project{
-    display:grid;grid-template-columns:64px 1fr;gap:30px;
-    padding:54px 0;border-top:1px solid var(--silver-line);
-  }
-  .project:last-child{border-bottom:1px solid var(--silver-line)}
   .p-num{font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--silver);transition:transform .45s cubic-bezier(.2,.6,.2,1),color .45s ease}
   .project:hover .p-num{transform:translateY(-4px);color:var(--ink)}
-  .p-body{display:grid;grid-template-columns:1fr;gap:26px}
+  .p-body{display:grid;grid-template-columns:1fr;gap:18px;align-content:start}
   .p-head .p-meta{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;gap:16px;flex-wrap:wrap}
   .p-head h3{font-size:clamp(28px,3.6vw,42px);line-height:1.04;font-weight:400;letter-spacing:-.005em;position:relative;display:inline-block}
   .p-head h3::after{content:"";position:absolute;left:0;bottom:-8px;height:1px;width:100%;background:var(--silver-line);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.6,.2,1)}
@@ -234,7 +231,7 @@
   .xp .org{font-size:13px;color:var(--graphite);margin:3px 0 12px}
   .xp ul{list-style:none}
   .xp li{font-size:15px;color:var(--ink-soft);font-weight:300;padding-left:18px;position:relative;margin-bottom:7px;line-height:1.55}
-  .xp li::before{content:"—";position:absolute;left:0;color:var(--silver)}
+  .xp li::before{content:"\2022";position:absolute;left:0;color:var(--silver);font-size:.7em;top:.05em}
   .skills{display:flex;flex-wrap:wrap;gap:10px}
   .skills span{font-size:12px;letter-spacing:.06em;color:var(--ink-soft);border:1px solid var(--silver-line);padding:9px 15px}
 
@@ -297,7 +294,7 @@
   .theme-btn svg{width:15px;height:15px;display:block}
 
   /* ---------- Dark (ink) mode ---------- */
-  body.dark{--ivory:#15130F;--ivory-deep:#1d1a15;--ink:#F1ECDF;--ink-soft:#D2CCBE;--muted:#8C877A;--silver:#6C685E;--silver-line:#332F28;--graphite:#A79F90}
+  body.dark{--ivory:#15130F;--ivory-deep:#1d1a15;--ink:#F1ECDF;--ink-soft:#D2CCBE;--muted:#8C877A;--silver:#6C685E;--silver-line:#332F28;--graphite:#A79F90;--gold:#C9B279}
   body.dark .grain{mix-blend-mode:soft-light;opacity:.08}
   body.dark header.nav{background:rgba(21,19,15,.82)}
   body.dark .nav-crest svg path:nth-of-type(1),
@@ -325,9 +322,211 @@
     border:1px solid var(--silver-line);padding:9px 16px;border-radius:999px;background:none;cursor:pointer;transition:.28s}
   .chip:hover{border-color:var(--ink);color:var(--ink)}
   .chip.active{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
-  .project{transition:opacity .4s ease}
   .project.hide{display:none}
 
+  /* ---------- Per-section background motion ---------- */
+  .sec-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+
+  /* Hero + Contact: soft aurora drift (bookends the page) */
+  .hero{overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .hero-bg span{position:absolute;border-radius:50%;filter:blur(70px);opacity:.4;
+    background:radial-gradient(circle,var(--silver),transparent 70%);animation:auroraDrift 26s ease-in-out infinite}
+  .hero-bg span:nth-child(1){width:440px;height:440px;top:-160px;left:-80px}
+  .hero-bg span:nth-child(2){width:340px;height:340px;top:60px;right:-100px;
+    background:radial-gradient(circle,#B7A26B,transparent 70%);opacity:.16;animation-duration:32s;animation-delay:-8s}
+  .hero-bg span:nth-child(3){width:300px;height:300px;bottom:-140px;left:38%;animation-duration:36s;animation-delay:-16s}
+  @keyframes auroraDrift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(30px,-24px,0) scale(1.1)}}
+  body.dark .hero-bg span{opacity:.22}
+  body.dark .hero-bg span:nth-child(2){opacity:.10}
+  #contact{position:relative;overflow:hidden}
+  .contact-bg span{opacity:.22}
+  .contact-bg span:nth-child(2){opacity:.09}
+  body.dark .contact-bg span{opacity:.14}
+
+  /* About: faint drifting blueprint grid, nods to CAD/technical drawing */
+  #about{position:relative;overflow:hidden}
+  .about-bg{background-image:
+      linear-gradient(var(--silver-line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--silver-line) 1px,transparent 1px);
+    background-size:64px 64px;opacity:.14;animation:gridDrift 44s linear infinite}
+  @keyframes gridDrift{to{background-position:64px 64px}}
+  body.dark .about-bg{opacity:.07}
+
+  /* Stats: a slow telemetry-style scan sweep */
+  .stats-sec{position:relative;overflow:hidden}
+  .stats-bg::before{content:'';position:absolute;top:0;bottom:0;left:-160px;width:140px;
+    background:linear-gradient(90deg,transparent,rgba(23,21,15,.06),transparent);
+    animation:scan 10s ease-in-out infinite}
+  @keyframes scan{0%{left:-160px}100%{left:100%}}
+  body.dark .stats-bg::before{background:linear-gradient(90deg,transparent,rgba(241,236,223,.07),transparent)}
+
+  /* Projects: quiet vignette so the cards stay the focus */
+  #projects{position:relative;overflow:hidden}
+  .projects-bg{background:radial-gradient(ellipse at 50% 0%,rgba(23,21,15,.035),transparent 60%)}
+  body.dark .projects-bg{background:radial-gradient(ellipse at 50% 0%,rgba(241,236,223,.045),transparent 60%)}
+
+  /* Experience: a margin rule that fills in as you scroll the CV */
+  #experience{position:relative}
+  #experience .timeline-glow{position:absolute;top:8px;bottom:8px;left:14px;width:1px;
+    background:linear-gradient(var(--graphite),transparent 92%);
+    transform:scaleY(0);transform-origin:top;pointer-events:none}
+
+  @media(prefers-reduced-motion:reduce){
+    .hero-bg span,.about-bg,.stats-bg::before{animation:none !important}
+    #experience .timeline-glow{transition:none !important}
+  }
+  @media(max-width:560px){
+    .hero-bg,.contact-bg,.about-bg{display:none}
+    #experience .timeline-glow{display:none}
+  }
+
+
+  /* ================= Gold accent token ================= */
+  @property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+
+  /* ================= Split-text scroll reveal ================= */
+  .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .06em .14em;margin:0 -.06em -.14em}
+  .wi{display:inline-block;transform:translateY(115%);opacity:0;
+    transition:transform .9s cubic-bezier(.2,.65,.2,1),opacity .9s cubic-bezier(.2,.65,.2,1)}
+  .split.in .wi{transform:none;opacity:1}
+
+  /* ================= Shared card mechanics ================= */
+  .tcard{position:relative;transform-style:preserve-3d;transition:transform .16s ease-out,box-shadow .5s ease,border-color .5s ease}
+  .tcard.resetting{transition:transform .65s cubic-bezier(.2,.65,.2,1),box-shadow .5s ease,border-color .5s ease}
+  .tcard>:not(.card-crest):not(.tc-edge){position:relative;z-index:2}
+  .card-crest{z-index:4}
+  /* cursor-tracked spotlight */
+  .tcard::before{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;
+    background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),
+      color-mix(in srgb,var(--gold) 20%,transparent),transparent 68%);
+    opacity:0;transition:opacity .45s ease}
+  .tcard:hover::before{opacity:1}
+  /* traced gold hairline (own layer, so .card's inner frame survives) */
+  .tc-edge{position:absolute;inset:0;z-index:3;border-radius:inherit;padding:1px;pointer-events:none;
+    background:conic-gradient(from var(--angle),transparent 0%,var(--gold) 9%,transparent 22%,transparent 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    mask-composite:exclude;opacity:0;transition:opacity .55s ease}
+  .tcard:hover .tc-edge{opacity:1;animation:traceAngle 4.5s linear infinite}
+  @keyframes traceAngle{to{--angle:360deg}}
+
+  /* ================= Projects as cards ================= */
+  .project{position:relative;display:grid;grid-template-columns:64px 1fr;gap:30px;
+    padding:34px 34px 26px;border:1px solid var(--silver-line);border-radius:3px;margin-bottom:16px;
+    background:color-mix(in srgb,var(--ivory) 92%,#fff);transition:opacity .4s ease,transform .5s cubic-bezier(.2,.65,.2,1),border-color .5s ease}
+  body.dark .project{background:color-mix(in srgb,var(--ivory) 88%,#fff 4%)}
+  .project:last-child{border-bottom:1px solid var(--silver-line)}
+  .project:hover{border-color:color-mix(in srgb,var(--gold) 45%,var(--silver-line))}
+  .p-toggle{display:inline-flex;align-items:center;gap:11px;background:none;border:0;padding:0;cursor:pointer;
+    font-family:"Inter",sans-serif;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--graphite);transition:color .3s ease;width:fit-content}
+  .p-toggle:hover{color:var(--ink)}
+  .p-toggle-ico{position:relative;width:13px;height:13px;flex:0 0 auto}
+  .p-toggle-ico::before,.p-toggle-ico::after{content:"";position:absolute;background:currentColor;
+    transition:transform .45s cubic-bezier(.2,.65,.2,1),opacity .35s ease}
+  .p-toggle-ico::before{left:0;top:6px;width:13px;height:1px}
+  .p-toggle-ico::after{left:6px;top:0;width:1px;height:13px}
+  .project.open .p-toggle-ico::after{transform:rotate(90deg);opacity:0}
+  .project.open .p-toggle-ico::before{transform:rotate(180deg)}
+  .p-detail{height:0;overflow:hidden;opacity:0;
+    transition:height .6s cubic-bezier(.2,.65,.2,1),opacity .45s ease}
+  .p-detail-inner{display:grid;gap:24px;align-content:start;padding-top:26px}
+  .project.open .p-detail{opacity:1}
+  .p-head{cursor:pointer}
+
+  /* ================= Skills marquee ================= */
+  .marquee{position:relative;overflow:hidden;display:grid;gap:12px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .mq-row{display:flex;overflow:hidden}
+  .mq-track{display:flex;gap:10px;padding-right:10px;flex:0 0 auto;animation:mq 46s linear infinite;will-change:transform}
+  .mq-row.rev .mq-track{animation-direction:reverse;animation-duration:58s}
+  .marquee:hover .mq-track{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-100%)}}
+  .mq-item{font-size:12px;letter-spacing:.06em;color:var(--ink-soft);border:1px solid var(--silver-line);
+    padding:9px 15px;white-space:nowrap;transition:border-color .3s ease,color .3s ease}
+  .mq-item:hover{border-color:var(--gold);color:var(--ink)}
+
+  /* ================= Magnetic buttons ================= */
+  .btn{transition:background .3s ease,color .3s ease,border-color .3s ease,transform .35s cubic-bezier(.2,.65,.2,1)}
+
+  /* ================= Figures reveal as a project opens ================= */
+  .p-detail .p-figure{opacity:0;transform:translateY(16px);
+    transition:opacity .8s ease,transform .8s cubic-bezier(.2,.65,.2,1)}
+  .project.open .p-detail .p-figure{opacity:1;transform:none}
+
+  /* ================= Contact card tilt ================= */
+  .card{border-radius:2px}
+
+  @media(prefers-reduced-motion:reduce){
+    .wi{transform:none !important;opacity:1 !important;transition:none !important}
+    .mq-track{animation:none !important}
+    .tc-edge{animation:none !important}
+    .p-detail{transition:none !important}
+    .p-detail .p-figure{opacity:1 !important;transform:none !important;transition:none !important}
+    .btn{transition:none !important}
+  }
+  @media(max-width:860px){
+    .project{padding:26px 22px 24px}
+  }
+
+
+  /* ================= Easter egg: drafting-table overlay ================= */
+  .footer-crest{background:none;border:0;padding:0;cursor:pointer;color:inherit;font:inherit}
+  #egg{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:24px;outline:none;
+    background:color-mix(in srgb,var(--ivory) 86%,transparent);
+    -webkit-backdrop-filter:blur(16px) saturate(120%);backdrop-filter:blur(16px) saturate(120%);
+    opacity:0;transition:opacity .5s ease}
+  #egg.open{display:flex}
+  #egg.show{opacity:1}
+  .egg-card{position:relative;width:min(520px,88vw);padding:54px 44px 44px;text-align:center;
+    border:1px solid var(--silver-line);background:var(--ivory);
+    box-shadow:0 40px 110px rgba(23,21,15,.18);
+    transform:translateY(20px) scale(.985);transition:transform .65s cubic-bezier(.2,.65,.2,1)}
+  body.dark .egg-card{box-shadow:0 40px 110px rgba(0,0,0,.5)}
+  #egg.show .egg-card{transform:none}
+  .egg-card::after{content:"";position:absolute;inset:7px;border:1px solid color-mix(in srgb,var(--silver) 40%,transparent);pointer-events:none}
+  /* drafting corner ticks */
+  .egg-tick{position:absolute;width:13px;height:13px;border:0 solid var(--gold);opacity:.75}
+  .egg-tick.tl{top:16px;left:16px;border-top-width:1px;border-left-width:1px}
+  .egg-tick.tr{top:16px;right:16px;border-top-width:1px;border-right-width:1px}
+  .egg-tick.bl{bottom:16px;left:16px;border-bottom-width:1px;border-left-width:1px}
+  .egg-tick.br{bottom:16px;right:16px;border-bottom-width:1px;border-right-width:1px}
+  /* crest that redraws itself, with a surveying scan line */
+  .egg-crest-wrap{position:relative;display:inline-block;margin-bottom:24px}
+  .egg-crest{width:92px;height:auto;display:block}
+  .egg-crest .outline{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-dasharray:262;stroke-dashoffset:262}
+  .egg-crest .inner{fill:none;stroke:var(--silver);stroke-width:.7;stroke-dasharray:210;stroke-dashoffset:210;opacity:.7}
+  .egg-crest .kg{fill:var(--ink);opacity:0}
+  #egg.show .egg-crest .outline{animation:eggDraw 3.4s cubic-bezier(.45,0,.2,1) infinite}
+  #egg.show .egg-crest .inner{animation:eggDrawIn 3.4s cubic-bezier(.45,0,.2,1) .35s infinite}
+  #egg.show .egg-crest .kg{animation:eggKg 3.4s ease infinite}
+  @keyframes eggDraw{0%{stroke-dashoffset:262}40%{stroke-dashoffset:0}70%{stroke-dashoffset:0}100%{stroke-dashoffset:-262}}
+  @keyframes eggDrawIn{0%{stroke-dashoffset:210}40%{stroke-dashoffset:0}70%{stroke-dashoffset:0}100%{stroke-dashoffset:-210}}
+  @keyframes eggKg{0%,22%{opacity:0}45%,68%{opacity:1}90%,100%{opacity:0}}
+  .egg-scan{position:absolute;left:-14px;right:-14px;height:1px;pointer-events:none;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.9}
+  #egg.show .egg-scan{animation:eggScan 3.4s ease-in-out infinite}
+  @keyframes eggScan{0%{top:0;opacity:0}12%{opacity:.9}88%{opacity:.9}100%{top:100%;opacity:0}}
+  .egg-eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+  .egg-title{font-family:"Inter",sans-serif;font-size:15px;font-weight:400;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--ink);margin-top:14px;min-height:1.3em}
+  .egg-sub{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;font-style:italic;
+    color:var(--ink-soft);margin-top:16px;line-height:1.45}
+  .egg-bar{position:relative;overflow:hidden;height:1px;width:190px;margin:30px auto 0;background:var(--silver-line)}
+  .egg-bar::after{content:"";position:absolute;top:0;bottom:0;left:0;width:38%;background:var(--gold)}
+  #egg.show .egg-bar::after{animation:eggBar 2.8s cubic-bezier(.65,0,.35,1) infinite}
+  @keyframes eggBar{0%{transform:translateX(-110%)}100%{transform:translateX(370%)}}
+  .egg-hint{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-top:26px}
+  @media(prefers-reduced-motion:reduce){
+    #egg.show .egg-crest .outline,#egg.show .egg-crest .inner,#egg.show .egg-crest .kg,
+    #egg.show .egg-scan,#egg.show .egg-bar::after{animation:none !important}
+    .egg-crest .outline,.egg-crest .inner{stroke-dashoffset:0 !important}
+    .egg-crest .kg{opacity:1 !important}
+    .egg-scan{display:none}
+    .egg-card{transition:none !important}
+  }
   @media(max-width:860px){
     .nav-tools{gap:12px}
     .wrap{padding:0 24px}
@@ -376,7 +575,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path class="t-moon" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
       </div>
-      <a href="#top" class="nav-crest" aria-label="Killian Gerard — home">
+      <a href="#top" class="nav-crest" aria-label="Killian Gerard, home">
         <svg viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
           <path d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="#17150F" stroke="#CFCBBF" stroke-width="1.4"/>
           <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
@@ -388,16 +587,36 @@
   </div>
   <div class="progress" id="prog"></div>
 </header>
+<div id="egg" role="dialog" aria-modal="true" aria-labelledby="eggTitle" aria-hidden="true">
+  <div class="egg-card">
+    <span class="egg-tick tl"></span><span class="egg-tick tr"></span>
+    <span class="egg-tick bl"></span><span class="egg-tick br"></span>
+    <div class="egg-crest-wrap">
+      <svg class="egg-crest" viewBox="0 0 64 72" aria-hidden="true">
+        <path class="outline" d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z"/>
+        <path class="inner" d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z"/>
+        <text class="kg" x="32" y="42" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="21" text-anchor="middle">KG</text>
+      </svg>
+      <span class="egg-scan" aria-hidden="true"></span>
+    </div>
+    <div class="egg-eyebrow" data-fr="Vous avez trouvé le sceau">You found the seal</div>
+    <h3 class="egg-title" id="eggTitle" data-fr="EN CONSTRUCTION">UNDER CONSTRUCTION</h3>
+    <p class="egg-sub" data-fr="Quelque chose se construit ici. Revenez bientôt.">Something is being built here. Do come back.</p>
+    <div class="egg-bar" aria-hidden="true"></div>
+    <div class="egg-hint" data-fr="Échap ou cliquez pour fermer">Esc or click anywhere to close</div>
+  </div>
+</div>
 <div class="lb" id="lb"><span class="x">Close ✕</span><img alt="" /></div>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap">
-    <div class="masthead anim a1"><span class="edge" data-fr="Londres, R.-U.">London, UK</span><span class="mid">Portfolio</span><span class="edge edge2" data-fr="Anno MMXXVI">Anno MMXXVI</span></div>
-    <p class="eyebrow anim a2" data-fr="Ingénierie mécatronique · Machine learning · Londres">Mechatronics Engineering · Machine Learning · London</p>
+    <div class="masthead anim a1"><span class="edge" data-fr="Londres · Madrid">London · Madrid</span><span class="mid">Portfolio</span><span class="edge edge2">2026</span></div>
+    <p class="eyebrow anim a2" data-fr="Ingénierie mécatronique · Machine learning · Londres &amp; Madrid">Mechatronics Engineering · Machine Learning · London &amp; Madrid</p>
     <h1 class="anim a2">Killian<br><span class="last">Gerard</span></h1>
     <p class="hero-nat anim a2" data-fr="Binational franco-britannique · Trilingue">Dual French &amp; British national · Trilingual</p>
-    <p class="hero-lead anim a3" data-fr="Je suis diplômé d'un BEng en mécatronique — Second Class Honours (Division One) — et j'aime mener une idée jusqu'à un prototype qui fonctionne. Mes projets vont de la robotique embarquée et de l'analyse vibratoire des trains à grande vitesse aux modèles de machine learning qui prédisent la durée de vie d'un équipement. J'ai passé deux étés au cœur d'opérations énergétiques en activité, et cet été j'ai suivi l'école d'été d'IE Madrid en fondamentaux de la finance avant de commencer le MSc en Fintech en septembre.">I am a Mechatronics&nbsp;BEng graduate — Second Class Honours (Division One) — who likes taking an idea all the way to a working build. My work runs from embedded robotics and high-speed-rail vibration analysis to <span class="serif">machine-learning</span> models that forecast how long an asset will last. I spent two summers inside live energy operations, and this summer I completed <span class="serif">IE Madrid</span>'s Summer School in Finance Fundamentals ahead of starting the MSc in Fintech there this September.</p>
+    <p class="hero-lead anim a3" data-fr="Je suis diplômé d'un BEng en mécatronique, Second Class Honours (Division One), et j'aime mener une idée jusqu'à un prototype qui fonctionne. Mes projets vont de la robotique embarquée et de l'analyse vibratoire des trains à grande vitesse aux modèles de <span class='serif'>machine learning</span> qui prédisent la durée de vie d'un équipement. J'ai passé deux étés au cœur d'opérations énergétiques en activité, et cet été j'ai suivi l'école d'été d'<span class='serif'>IE Madrid</span> en fondamentaux de la finance avant de commencer le MSc en Fintech en septembre.">I am a Mechatronics&nbsp;BEng graduate, Second Class Honours (Division One), who likes taking an idea all the way to a working build. My work runs from embedded robotics and high-speed-rail vibration analysis to <span class="serif">machine-learning</span> models that forecast how long an asset will last. I spent two summers inside live energy operations, and this summer I completed <span class="serif">IE Madrid</span>'s Summer School in Finance Fundamentals ahead of starting the MSc in Fintech there this September.</p>
     <div class="hero-cta anim a4">
       <a href="#projects" class="btn" data-fr="Voir les projets">View Projects</a>
       <a href="assets/Killian-Gerard-Portfolio.pdf" class="btn ghost" target="_blank" data-fr="Télécharger le portfolio">Download Portfolio</a>
@@ -408,23 +627,24 @@
 
 <!-- ABOUT -->
 <section id="about">
+  <div class="sec-bg about-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="sec-head"><h2 data-fr="L'ingénierie, de bout en bout">Engineering, end to end</h2><span class="idx" data-fr="01 · À propos">01 · About</span></div>
     <div class="about-grid">
       <div>
-        <p data-fr="Je suis diplômé en ingénierie mécatronique de l'université de Lancaster — Second Class Honours (Division One) — avec de solides bases dans les fondamentaux de l'ingénierie et l'habitude de mener un projet du concept jusqu'à un prototype fonctionnel : conception mécanique, contrôle embarqué, simulation et essais.">I am a <span class="serif">Mechatronics Engineering</span> graduate — Second Class Honours (Division One) — from Lancaster University with a foundation in engineering first principles and a habit of taking projects from concept to a working build, covering mechanical design, embedded control, simulation and testing.</p>
-        <p data-fr="Mon travail le plus exigeant se situe à la rencontre du matériel et des données : un modèle LSTM qui prédit la durée de vie restante de batteries lithium-ion à une fraction de pourcent près, et un concept de suspension à analyse vibratoire pour train à grande vitesse, avec détection d'anomalies par machine learning. En parallèle de mes études, j'ai réalisé deux stages dans des opérations énergétiques en activité : Vitol sur des turbines à gaz au Royaume-Uni, puis VIVO Energy (licencié Shell) sur des infrastructures GPL et pétrolières au Maroc, où j'ai appris la modélisation CAPEX/OPEX et la prévision de la demande sur le terrain.">My most rigorous work sits at the meeting point of hardware and data: an <span class="serif">LSTM model</span> predicting the remaining useful life of lithium-ion batteries to within a fraction of a percent, and a vibration-analysis suspension concept for high-speed rail with machine-learning anomaly detection. Alongside my degree I completed two internships in live energy operations: <span class="serif">Vitol</span> on UK gas turbines, then <span class="serif">VIVO Energy (Shell licensee)</span> on LPG and oil infrastructure in Morocco, where I learned CAPEX/OPEX modelling and demand forecasting in the field.</p>
-        <p data-fr="Ce mélange de rigueur d'ingénieur et de modélisation quantitative est ce qui m'attire vers la finance quantitative. Cet été, j'ai suivi l'école d'été d'IE Madrid en fondamentaux de la finance, et je commence le MSc Fintech d'IE Madrid en septembre.">That blend of engineering discipline and quantitative modelling is what draws me toward <span class="serif">quantitative finance</span>. This summer I completed IE Madrid's Summer School in Finance Fundamentals, and I begin IE Madrid's MSc in Fintech this September.</p>
+        <p data-fr="Je suis diplômé en <span class='serif'>ingénierie mécatronique</span> de l'université de Lancaster, Second Class Honours (Division One), avec de solides bases dans les fondamentaux de l'ingénierie et l'habitude de mener un projet du concept jusqu'à un prototype fonctionnel : conception mécanique, contrôle embarqué, simulation et essais.">I am a <span class="serif">Mechatronics Engineering</span> graduate, Second Class Honours (Division One), from Lancaster University with a foundation in engineering first principles and a habit of taking projects from concept to a working build, covering mechanical design, embedded control, simulation and testing.</p>
+        <p data-fr="Mon travail le plus exigeant se situe à la rencontre du matériel et des données : un <span class='serif'>modèle LSTM</span> qui prédit la durée de vie restante de batteries lithium-ion à une fraction de pourcent près, et un concept de suspension à analyse vibratoire pour train à grande vitesse, avec détection d'anomalies par machine learning. En parallèle de mes études, j'ai réalisé deux stages dans des opérations énergétiques en activité : <span class='serif'>Vitol</span> sur des turbines à gaz au Royaume-Uni, puis <span class='serif'>VIVO Energy (licencié Shell)</span> sur des infrastructures GPL et pétrolières au Maroc, où j'ai appris la modélisation CAPEX/OPEX et la prévision de la demande sur le terrain.">My most rigorous work sits at the meeting point of hardware and data: an <span class="serif">LSTM model</span> predicting the remaining useful life of lithium-ion batteries to within a fraction of a percent, and a vibration-analysis suspension concept for high-speed rail with machine-learning anomaly detection. Alongside my degree I completed two internships in live energy operations: <span class="serif">Vitol</span> on UK gas turbines, then <span class="serif">VIVO Energy (Shell licensee)</span> on LPG and oil infrastructure in Morocco, where I learned CAPEX/OPEX modelling and demand forecasting in the field.</p>
+        <p data-fr="Ce mélange de rigueur d'ingénieur et de modélisation quantitative est ce qui m'attire vers la <span class='serif'>finance quantitative</span>. Cet été, j'ai suivi l'école d'été d'IE Madrid en fondamentaux de la finance, et je commence le MSc Fintech d'IE Madrid en septembre.">That blend of engineering discipline and quantitative modelling is what draws me toward <span class="serif">quantitative finance</span>. This summer I completed IE Madrid's Summer School in Finance Fundamentals, and I begin IE Madrid's MSc in Fintech this September.</p>
       </div>
       <dl class="glance">
         <div class="eyebrow" data-fr="En bref">At a glance</div>
         <dt data-fr="Domaine">Focus</dt><dd data-fr="Machine learning et mécatronique">Machine learning &amp; mechatronics</dd>
-        <dt data-fr="Diplôme">Degree</dt><dd data-fr="BEng (Hons) en ingénierie mécatronique — Second Class Honours (Division One)">Mechatronics Engineering BEng (Hons) — Second Class Honours (Division One)</dd>
+        <dt data-fr="Diplôme">Degree</dt><dd data-fr="BEng (Hons) en ingénierie mécatronique, Second Class Honours (Division One)">Mechatronics Engineering BEng (Hons), Second Class Honours (Division One)</dd>
         <dt data-fr="Université">University</dt><dd data-fr="Université de Lancaster">Lancaster University</dd>
         <dt data-fr="Récemment">Recently</dt><dd data-fr="École d'été IE Madrid, fondamentaux de la finance (2026)">IE Madrid Summer School, Finance Fundamentals (2026)</dd>
         <dt data-fr="Prochaine étape">Next</dt><dd data-fr="MSc Fintech, IE Madrid (sept. 2026)">MSc Fintech, IE Madrid (Sept 2026)</dd>
         <dt data-fr="Langues">Languages</dt><dd data-fr="Français et anglais (langues maternelles), espagnol (courant)">French &amp; English (native), Spanish (proficient)</dd>
-        <dt data-fr="Localisation">Location</dt><dd data-fr="Londres, Royaume-Uni">London, United Kingdom</dd>
+        <dt data-fr="Localisation">Location</dt><dd data-fr="Londres · Madrid">London · Madrid</dd>
       </dl>
     </div>
   </div>
@@ -432,6 +652,7 @@
 
 <!-- STATS -->
 <section class="stats-sec">
+  <div class="sec-bg stats-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="stats">
       <div class="stat"><div class="num" data-target="0.07" data-dec="2" data-prefix="&lt; " data-suffix="%">&lt; 0.07%</div><div class="lbl" data-fr="Erreur de prévision de capacité (MAPE)">Battery forecast error (MAPE)</div></div>
@@ -445,6 +666,7 @@
 
 <!-- PROJECTS -->
 <section id="projects">
+  <div class="sec-bg projects-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="sec-head"><h2 data-fr="Travaux choisis">Selected work</h2><span class="idx" data-fr="02 · Projets">02 · Projects</span></div>
 
@@ -456,19 +678,21 @@
     </div>
 
     <!-- P1 Battery ML -->
-    <article class="project" data-cat="ml">
+    <article class="project tcard" data-cat="ml">
       <div class="p-num">01</div>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 3e année">Third-year project</span><span data-fr="Individuel">Individual</span><span>2025</span></div>
           <h3>Machine Learning for the <em>Remaining Useful Life</em> of Lithium-Ion Batteries</h3>
         </div>
-        <a class="p-repo" href="https://github.com/killiang27/li-ion-battery-rul-prediction" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-fr="Voir le dépôt">View repository</span></a>
-        <p class="p-desc" data-fr="J'ai entraîné un LSTM à deux couches sur le jeu de données de décharge de batteries Stanford/MIT pour prédire la perte de capacité au fil du temps et repérer le point de rupture où le déclin s'accélère soudainement, avec une erreur absolue moyenne en pourcentage inférieure à 0,07 %. J'ai aussi développé une interface Gradio pour régler la longueur de séquence, les epochs et la répartition entraînement/test, avec des garde-fous empêchant toute fuite de données entre batteries. La même approche de prévision se transpose directement à la modélisation du risque et du défaut d'actifs.">I trained a two-layer LSTM on the Stanford/MIT battery-discharge dataset to predict how capacity fades over time and to catch the knee-point where decline suddenly accelerates, landing a mean absolute percentage error under 0.07%. I also built a Gradio interface for tuning the sequence length, epochs and train/test split, with guards so the model never leaks data across battery boundaries. The same forecasting idea carries straight over to risk and asset-default modelling.</p>
         <div class="p-tags">
           <span class="tag">Python</span><span class="tag">TensorFlow / Keras</span><span class="tag">LSTM</span><span class="tag">Time-series</span><span class="tag">Gradio</span>
         </div>
-        <figure class="p-figure">
+        <button class="p-toggle" type="button" aria-expanded="false" data-open-en="Close project" data-open-fr="Fermer le projet"><span class="p-toggle-label" data-fr="Voir le projet">View project</span><span class="p-toggle-ico" aria-hidden="true"></span></button>
+        <div class="p-detail"><div class="p-detail-inner">
+          <a class="p-repo" href="https://github.com/killiang27/li-ion-battery-rul-prediction" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-fr="Voir le dépôt">View repository</span></a>
+          <p class="p-desc" data-fr="J'ai entraîné un LSTM à deux couches sur le jeu de données de décharge de batteries Stanford/MIT pour prédire la perte de capacité au fil du temps et repérer le point de rupture où le déclin s'accélère soudainement, avec une erreur absolue moyenne en pourcentage inférieure à 0,07 %. J'ai aussi développé une interface Gradio pour régler la longueur de séquence, les epochs et la répartition entraînement/test, avec des garde-fous empêchant toute fuite de données entre batteries. La même approche de prévision se transpose directement à la modélisation du risque et du défaut d'actifs.">I trained a two-layer LSTM on the Stanford/MIT battery-discharge dataset to predict how capacity fades over time and to catch the knee-point where decline suddenly accelerates, landing a mean absolute percentage error under 0.07%. I also built a Gradio interface for tuning the sequence length, epochs and train/test split, with guards so the model never leaks data across battery boundaries. The same forecasting idea carries straight over to risk and asset-default modelling.</p>
+          <figure class="p-figure">
           <img src="assets/battery-stanford.png" alt="Feature engineering: capacity plateau vs extracted dQ/dN sensitivity on the Stanford dataset" loading="lazy" />
           <figcaption>Feature engineering: capacity plateau vs. extracted dQ/dN degradation signal (Stanford dataset)</figcaption>
         </figure>
@@ -476,23 +700,24 @@
           <img src="assets/battery-lstm-code.png" alt="The two-layer LSTM model definition in Keras: stacked LSTM layers with dropout and a dense output" loading="lazy" />
           <figcaption>The model: a two-layer stacked LSTM (64 → 32 units) with dropout, Adam optimiser and MSE loss</figcaption>
         </figure>
+        </div></div>
       </div>
     </article>
-
-    <!-- P2 Vibration -->
-    <article class="project" data-cat="ml cad">
+    <article class="project tcard" data-cat="ml cad">
       <div class="p-num">02</div>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 3e année">Third-year project</span><span data-fr="Groupe de 6">Group of 6</span><span>2025</span></div>
           <h3>Vibration Analysis: <em>High-Speed-Rail Suspension</em> with ML Anomaly Detection</h3>
         </div>
-        <a class="p-repo" href="https://github.com/killiang27/train-vibration-anomaly-detection" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-fr="Voir le dépôt">View repository</span></a>
-        <p class="p-desc" data-fr="Au sein d'un groupe de six, j'ai participé à la conception d'une suspension semi-active pour train à grande vitesse : des ressorts pneumatiques à raideur variable associés à un actionneur hydraulique et un amortisseur secondaire, le tout modélisé sur la physique du quart de véhicule. J'ai ensuite développé un autoencodeur LSTM qui reconstruit le signal vibratoire et surveille l'erreur de reconstruction pour détecter les anomalies. Lorsqu'une véritable défaillance est confirmée, le système ordonne de lui-même au train de ralentir.">Working in a group of six, I helped design a semi-active suspension for a high-speed train: variable-stiffness air springs paired with a hydraulic actuator and a secondary damper, all modelled on quarter-car physics. I then built an LSTM autoencoder that reconstructs the vibration signal and watches the reconstruction error for anomalies. When it confirms a genuine fault, the system tells the train to slow down on its own.</p>
         <div class="p-tags">
           <span class="tag">Quarter-car model</span><span class="tag">LSTM autoencoder</span><span class="tag">Signal processing</span><span class="tag">MEMS / piezo sensing</span>
         </div>
-        <figure class="p-figure">
+        <button class="p-toggle" type="button" aria-expanded="false" data-open-en="Close project" data-open-fr="Fermer le projet"><span class="p-toggle-label" data-fr="Voir le projet">View project</span><span class="p-toggle-ico" aria-hidden="true"></span></button>
+        <div class="p-detail"><div class="p-detail-inner">
+          <a class="p-repo" href="https://github.com/killiang27/train-vibration-anomaly-detection" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-fr="Voir le dépôt">View repository</span></a>
+          <p class="p-desc" data-fr="Au sein d'un groupe de six, j'ai participé à la conception d'une suspension semi-active pour train à grande vitesse : des ressorts pneumatiques à raideur variable associés à un actionneur hydraulique et un amortisseur secondaire, le tout modélisé sur la physique du quart de véhicule. J'ai ensuite développé un autoencodeur LSTM qui reconstruit le signal vibratoire et surveille l'erreur de reconstruction pour détecter les anomalies. Lorsqu'une véritable défaillance est confirmée, le système ordonne de lui-même au train de ralentir.">Working in a group of six, I helped design a semi-active suspension for a high-speed train: variable-stiffness air springs paired with a hydraulic actuator and a secondary damper, all modelled on quarter-car physics. I then built an LSTM autoencoder that reconstructs the vibration signal and watches the reconstruction error for anomalies. When it confirms a genuine fault, the system tells the train to slow down on its own.</p>
+          <figure class="p-figure">
           <img src="assets/vibration-sketch.png" alt="System-level architecture: carriage body, bogie frame and axle with air spring, hydraulic actuator, sensors and MCU/LSTM controller" loading="lazy" />
           <figcaption>System-level architecture: air spring, hydraulic actuator, MEMS/piezo sensing and the MCU/LSTM anomaly-detection controller</figcaption>
         </figure>
@@ -500,22 +725,23 @@
           <img src="assets/vibration-quartercar.png" alt="Quarter-car suspension displacement, anomaly score and hydraulic valve status" loading="lazy" />
           <figcaption>Quarter-car physics: air-spring and hydraulic-damper displacement and valve response under fault injection</figcaption>
         </figure>
+        </div></div>
       </div>
     </article>
-
-    <!-- P3 Ping pong robot -->
-    <article class="project" data-cat="robotics">
+    <article class="project tcard" data-cat="robotics">
       <div class="p-num">03</div>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 2e année">Second-year project</span><span data-fr="Équipe">Team</span><span>2024</span></div>
           <h3>Line-Following Robot with a <em>Dual-Barrel Ping-Pong Cannon</em></h3>
         </div>
-        <p class="p-desc" data-fr="C'était un projet de groupe. L'équipe a construit un robot autonome qui suit une ligne grâce à des capteurs LDR et tire des balles de ping-pong sur une cible après avoir parcouru une distance définie. Le mécanisme de tir utilise deux canons imprimés en 3D, un marteau à élastique et un servomoteur qui libère une gâchette à ficelle, de sorte que les deux balles partent à des hauteurs différentes.">This was a group project. The team built an autonomous robot that tracks a line with LDR sensors and fires ping-pong balls at a target once it has covered a set distance. The firing mechanism uses two 3D-printed barrels, an elastic-band ball hammer and a servo that releases a string trigger, so the two balls launch at different heights.</p>
         <div class="p-tags">
           <span class="tag">Embedded C / Arduino</span><span class="tag">LDR line detection</span><span class="tag">Servo actuation</span><span class="tag">3D printing</span>
         </div>
-        <figure class="p-figure">
+        <button class="p-toggle" type="button" aria-expanded="false" data-open-en="Close project" data-open-fr="Fermer le projet"><span class="p-toggle-label" data-fr="Voir le projet">View project</span><span class="p-toggle-ico" aria-hidden="true"></span></button>
+        <div class="p-detail"><div class="p-detail-inner">
+          <p class="p-desc" data-fr="C'était un projet de groupe. L'équipe a construit un robot autonome qui suit une ligne grâce à des capteurs LDR et tire des balles de ping-pong sur une cible après avoir parcouru une distance définie. Le mécanisme de tir utilise deux canons imprimés en 3D, un marteau à élastique et un servomoteur qui libère une gâchette à ficelle, de sorte que les deux balles partent à des hauteurs différentes.">This was a group project. The team built an autonomous robot that tracks a line with LDR sensors and fires ping-pong balls at a target once it has covered a set distance. The firing mechanism uses two 3D-printed barrels, an elastic-band ball hammer and a servo that releases a string trigger, so the two balls launch at different heights.</p>
+          <figure class="p-figure">
           <img src="assets/robot-photo.png" alt="The built line-following robot with twin 3D-printed ping-pong cannons on a green chassis" loading="lazy" />
           <figcaption>The built robot: twin 3D-printed barrels with elastic-band firing on the drive chassis</figcaption>
         </figure>
@@ -523,22 +749,23 @@
           <img src="assets/robot-cannon.png" alt="Skeletal diagram of the dual-barrel cannon: ball hammer, elastic bands and servo-released string trigger" loading="lazy" />
           <figcaption>Cannon mechanism: ball hammer, elastic bands and a servo-released string trigger</figcaption>
         </figure>
+        </div></div>
       </div>
     </article>
-
-    <!-- P4 IMechE car -->
-    <article class="project" data-cat="robotics cad">
+    <article class="project tcard" data-cat="robotics cad">
       <div class="p-num">04</div>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 1re année">First-year project</span><span>IMechE</span><span>2023</span></div>
           <h3>IMechE Autonomous <em>Wall-Strike &amp; Return</em> Robot Car</h3>
         </div>
-        <p class="p-desc" data-fr="C'était un projet de groupe pour le défi IMechE. L'équipe a conçu et construit une voiture-robot qui fonce dans un mur puis recule exactement à son point de départ. La fiabilité reposait sur un calibrage soigné de la distance et une séquence de commande simple, répétable à chaque essai.">This was a group project for the IMechE challenge. The team designed and built a robot car that drives into a wall and then reverses back to exactly where it started. Getting it consistent came down to careful distance calibration and a simple control sequence the car could repeat every run.</p>
         <div class="p-tags">
           <span class="tag">SolidWorks</span><span class="tag">DPDT control</span><span class="tag">Motor control</span><span class="tag">Mechanical design</span>
         </div>
-        <div class="figrow figrow-even">
+        <button class="p-toggle" type="button" aria-expanded="false" data-open-en="Close project" data-open-fr="Fermer le projet"><span class="p-toggle-label" data-fr="Voir le projet">View project</span><span class="p-toggle-ico" aria-hidden="true"></span></button>
+        <div class="p-detail"><div class="p-detail-inner">
+          <p class="p-desc" data-fr="C'était un projet de groupe pour le défi IMechE. L'équipe a conçu et construit une voiture-robot qui fonce dans un mur puis recule exactement à son point de départ. La fiabilité reposait sur un calibrage soigné de la distance et une séquence de commande simple, répétable à chaque essai.">This was a group project for the IMechE challenge. The team designed and built a robot car that drives into a wall and then reverses back to exactly where it started. Getting it consistent came down to careful distance calibration and a simple control sequence the car could repeat every run.</p>
+          <div class="figrow figrow-even">
           <figure class="p-figure">
             <img src="assets/imeche-cad.png" alt="SolidWorks assembly of the IMechE robot car chassis, motor and drivetrain" loading="lazy" />
             <figcaption>SolidWorks chassis &amp; drivetrain assembly</figcaption>
@@ -548,22 +775,23 @@
             <figcaption>DPDT reversing circuit: motor &amp; power supply</figcaption>
           </figure>
         </div>
+        </div></div>
       </div>
     </article>
-
-    <!-- P5 Wind turbine -->
-    <article class="project" data-cat="cad">
+    <article class="project tcard" data-cat="cad">
       <div class="p-num">05</div>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 1re année">First-year project</span><span data-fr="Groupe">Group</span><span>2023</span></div>
           <h3>Scalable Miniature <em>Wind-Turbine Aerofoil</em></h3>
         </div>
-        <p class="p-desc" data-fr="Nous avons conçu, modélisé et testé en soufflerie une pale à échelle variable, pensée pour extraire le maximum de puissance du flux d'air. La géométrie a été réalisée sous JavaFoil et SolidWorks, puis nous avons mesuré courant, tension et puissance à différents régimes de ventilateur pour calculer le coefficient de performance et le rapport de vitesse en bout de pale, ainsi que les sources de perte de précision.">We designed, modelled and wind-tunnel tested a scalable aerofoil blade built to pull as much power as possible out of the airflow. The geometry came together in JavaFoil and SolidWorks, then we measured current, voltage and power across different fan speeds to work out the coefficient of performance and tip-speed ratio, along with where the experiment started losing accuracy.</p>
         <div class="p-tags">
           <span class="tag">SolidWorks</span><span class="tag">JavaFoil</span><span class="tag">Wind-tunnel testing</span><span class="tag">Aerodynamics</span>
         </div>
-        <div class="figrow">
+        <button class="p-toggle" type="button" aria-expanded="false" data-open-en="Close project" data-open-fr="Fermer le projet"><span class="p-toggle-label" data-fr="Voir le projet">View project</span><span class="p-toggle-ico" aria-hidden="true"></span></button>
+        <div class="p-detail"><div class="p-detail-inner">
+          <p class="p-desc" data-fr="Nous avons conçu, modélisé et testé en soufflerie une pale à échelle variable, pensée pour extraire le maximum de puissance du flux d'air. La géométrie a été réalisée sous JavaFoil et SolidWorks, puis nous avons mesuré courant, tension et puissance à différents régimes de ventilateur pour calculer le coefficient de performance et le rapport de vitesse en bout de pale, ainsi que les sources de perte de précision.">We designed, modelled and wind-tunnel tested a scalable aerofoil blade built to pull as much power as possible out of the airflow. The geometry came together in JavaFoil and SolidWorks, then we measured current, voltage and power across different fan speeds to work out the coefficient of performance and tip-speed ratio, along with where the experiment started losing accuracy.</p>
+          <div class="figrow">
           <figure class="p-figure">
             <img src="assets/aerofoil-cad.png" alt="SolidWorks model of the wind-turbine aerofoil blade" loading="lazy" />
             <figcaption>SolidWorks blade geometry</figcaption>
@@ -573,6 +801,7 @@
             <figcaption>Coefficient of performance vs. tip-speed ratio</figcaption>
           </figure>
         </div>
+        </div></div>
       </div>
     </article>
   </div>
@@ -580,6 +809,7 @@
 
 <!-- EXPERIENCE -->
 <section id="experience">
+  <div class="timeline-glow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="sec-head"><h2 data-fr="Expérience et formation">Experience &amp; education</h2><span class="idx" data-fr="03 · Curriculum vitæ">03 · Curriculum Vitae</span></div>
 
@@ -661,7 +891,7 @@
       </div>
       <div class="xp">
         <div class="when">2023 – 2026</div>
-        <div><h4>Lancaster University</h4><div class="org" data-fr="BEng (Hons) en ingénierie mécatronique — Second Class Honours (Division One)">Mechatronics Engineering BEng (Hons) — Second Class Honours (Division One)</div></div>
+        <div><h4>Lancaster University</h4><div class="org" data-fr="BEng (Hons) en ingénierie mécatronique, Second Class Honours (Division One)">Mechatronics Engineering BEng (Hons), Second Class Honours (Division One)</div></div>
       </div>
       <div class="xp">
         <div class="when">2022 – 2023</div>
@@ -684,12 +914,13 @@
 
 <!-- CONTACT -->
 <section id="contact">
+  <div class="hero-bg contact-bg" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap contact">
     <p class="eyebrow" data-fr="Restons en contact">Get in touch</p>
     <h2 data-fr="Construisons quelque chose">Let's build <em>something</em></h2>
     <p class="lead" data-fr="Je suis ouvert aux échanges autour de l'ingénierie, du machine learning, de la fintech et de la finance quantitative. L'e-mail et LinkedIn sont les meilleurs moyens de me joindre.">I'm open to conversations across engineering, machine learning, fintech and quantitative finance. Email or LinkedIn is the best way to reach me.</p>
 
-    <div class="card">
+    <div class="card tcard">
       <svg class="card-crest" viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
         <path d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="#17150F" stroke="#CFCBBF" stroke-width="1.4"/>
         <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
@@ -703,28 +934,23 @@
         <dt data-fr="E-mail">Email</dt><dd><a href="mailto:killian22.gerard@gmail.com">killian22.gerard@gmail.com</a></dd>
         <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/killian-g%C3%A9rard-362aba239" target="_blank">linkedin.com/in/killian-gerard</a></dd>
         <dt>GitHub</dt><dd><a href="https://github.com/killiang27" target="_blank">github.com/killiang27</a></dd>
-        <dt data-fr="Basé à">Based in</dt><dd data-fr="Londres, Royaume-Uni">London, United Kingdom</dd>
+        <dt data-fr="Basé à">Based in</dt><dd data-fr="Londres · Madrid">London · Madrid</dd>
       </dl>
     </div>
 
-    <div class="contact-links">
-      <a href="mailto:killian22.gerard@gmail.com" class="btn" data-fr="M'écrire">Email me</a>
-      <a href="https://www.linkedin.com/in/killian-g%C3%A9rard-362aba239" class="btn ghost" target="_blank">LinkedIn</a>
-      <a href="https://github.com/killiang27" class="btn ghost" target="_blank">GitHub</a>
-    </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <a href="#top" class="footer-crest" aria-label="Back to top">
+    <button type="button" class="footer-crest" id="eggBtn" aria-label="Killian Gerard monogram" aria-haspopup="dialog">
       <svg viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
         <path d="M32 3 L58 11 V35 C58 52 46 64 32 69 C18 64 6 52 6 35 V11 Z" fill="#17150F" stroke="#CFCBBF" stroke-width="1.4"/>
         <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
         <text x="32" y="42" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
       </svg>
-    </a>
-    <p data-fr="Killian Gerard · Portfolio d'ingénierie mécatronique · MMXXVI">Killian Gerard · Mechatronics Engineering Portfolio · MMXXVI</p>
+    </button>
+    <p data-fr="Killian Gerard · Portfolio d'ingénierie mécatronique · 2026">Killian Gerard · Mechatronics Engineering Portfolio · 2026</p>
   </div>
 </footer>
 
@@ -739,10 +965,29 @@
 
   const nav=document.querySelector('header.nav');
   const prog=document.getElementById('prog');
+
+  // scroll-linked decorative motion (hero/contact aurora parallax, CV timeline rule)
+  const heroBg=document.querySelector('.hero-bg:not(.contact-bg)');
+  const contactBg=document.querySelector('.contact-bg');
+  const xpSection=document.getElementById('experience');
+  const xpGlow=xpSection&&xpSection.querySelector('.timeline-glow');
+
   const onScroll=()=>{
     nav.classList.toggle('scrolled',scrollY>20);
     const h=document.documentElement.scrollHeight-innerHeight;
     prog.style.width=(h>0?(scrollY/h*100):0)+'%';
+
+    if(!reduce){
+      if(heroBg) heroBg.style.transform=`translate3d(0, ${scrollY*0.12}px, 0)`;
+      if(contactBg) contactBg.style.transform=`translate3d(0, ${scrollY*0.05}px, 0)`;
+    }
+    if(xpGlow){
+      const r=xpSection.getBoundingClientRect();
+      const total=r.height+innerHeight;
+      const passed=innerHeight-r.top;
+      const p=Math.min(1,Math.max(0,passed/total));
+      xpGlow.style.transform=`scaleY(${p})`;
+    }
   };
   addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
@@ -750,13 +995,13 @@
   btn.addEventListener('click',()=>links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
 
-  // 1 — reveal on scroll
+  // 1 · reveal on scroll
   const reveals=document.querySelectorAll('.sec-head, .about-grid>div, .glance, .project, .xp, .xp-block>.eyebrow, .skills, .contact>*');
   reveals.forEach(el=>el.classList.add('reveal'));
   const ro=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   reveals.forEach(el=>ro.observe(el));
 
-  // 3 — active nav link via section observer
+  // 3 · active nav link via section observer
   const ids=['about','projects','experience','contact'];
   const map={};document.querySelectorAll('.nav-links a[href^="#"]').forEach(a=>map[a.getAttribute('href').slice(1)]=a);
   const so=new IntersectionObserver((es)=>es.forEach(e=>{
@@ -764,7 +1009,7 @@
   }),{rootMargin:'-45% 0px -50% 0px'});
   ids.forEach(id=>{const s=document.getElementById(id);if(s)so.observe(s);});
 
-  // 2 — lightbox
+  // 2 · lightbox
   const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
   document.querySelectorAll('.p-figure img').forEach(img=>img.addEventListener('click',()=>{
     lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('open');document.body.style.overflow='hidden';
@@ -788,10 +1033,26 @@
       const tgt=parseFloat(el.dataset.target), dec=+el.dataset.dec||0,
             pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
       const fmt=v=>pre+v.toLocaleString(lang==='fr'?'fr-FR':'en-GB',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;
-      if(instant){el.textContent=fmt(tgt);return;}
-      const dur=1100, t0=performance.now();
-      const step=now=>{const k=Math.min(1,(now-t0)/dur);const e=1-Math.pow(1-k,3);
-        el.textContent=fmt(tgt*e); if(k<1)requestAnimationFrame(step); else el.textContent=fmt(tgt);};
+      const finalStr=fmt(tgt);
+      if(instant||reduce){el.textContent=finalStr;return;}
+      const GL='0123456789%<>~.+/MWK', scram=460, dur=1000, t0=performance.now();
+      let lastScram=0;
+      const step=now=>{
+        const t=now-t0;
+        if(t<scram){
+          if(now-lastScram>52){
+            lastScram=now;
+            let out='';
+            for(let i=0;i<finalStr.length;i++)
+              out += /\s/.test(finalStr[i]) ? finalStr[i] : GL[(Math.random()*GL.length)|0];
+            el.textContent=out;
+          }
+          requestAnimationFrame(step); return;
+        }
+        const k=Math.min(1,(t-scram)/dur), e=1-Math.pow(1-k,3);
+        el.textContent=fmt(tgt*e);
+        if(k<1)requestAnimationFrame(step); else el.textContent=finalStr;
+      };
       requestAnimationFrame(step);
     });
   }
@@ -805,8 +1066,9 @@
     : '<span class="on">EN</span>&nbsp;/&nbsp;<span class="off">FR</span>';};
   const setLang=l=>{
     document.documentElement.lang=l;
-    frEls.forEach(el=>{ if(l==='fr') el.textContent=el.dataset.fr; else el.innerHTML=el.dataset.en; });
+    frEls.forEach(el=>{ el.innerHTML = (l==='fr') ? el.dataset.fr : el.dataset.en; });
     paintLang(l); localStorage.setItem('lang',l);
+    if(window.__afterLang) window.__afterLang();
     if(countersDone) runCounters(true);
   };
   lang=localStorage.getItem('lang')||'en';
@@ -827,6 +1089,206 @@
     cards.forEach(card=>{const cats=(card.dataset.cat||'').split(' ');
       card.classList.toggle('hide', cat!=='all' && !cats.includes(cat));});
   }));
+  /* ==================== 5 · split-text headings ==================== */
+  function splitWords(el){
+    if(el.dataset.split==='1') return;
+    const frag=document.createDocumentFragment();
+    [...el.childNodes].forEach(node=>{
+      if(node.nodeType===3){
+        node.textContent.split(/(\s+)/).forEach(tok=>{
+          if(!tok) return;
+          if(!tok.trim()){frag.appendChild(document.createTextNode(tok));return;}
+          const w=document.createElement('span');w.className='w';
+          const i=document.createElement('span');i.className='wi';i.textContent=tok;
+          w.appendChild(i);frag.appendChild(w);
+        });
+      }else{
+        const w=document.createElement('span');w.className='w';
+        const i=document.createElement('span');i.className='wi';i.appendChild(node.cloneNode(true));
+        w.appendChild(i);frag.appendChild(w);
+      }
+    });
+    el.textContent='';el.appendChild(frag);el.dataset.split='1';
+    [...el.querySelectorAll('.wi')].forEach((n,k)=>n.style.transitionDelay=(k*0.055).toFixed(3)+'s');
+  }
+  const heads=[...document.querySelectorAll('.sec-head h2, .contact h2')];
+  function buildHeads(){
+    heads.forEach(h=>{
+      const wasIn=h.classList.contains('in');
+      h.dataset.split='';
+      h.classList.add('split');
+      splitWords(h);
+      if(wasIn) h.classList.add('in');
+    });
+  }
+  if(!reduce){
+    buildHeads();
+    const ho=new IntersectionObserver(es=>es.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');ho.unobserve(e.target);}
+    }),{threshold:.25});
+    heads.forEach(h=>ho.observe(h));
+  }
+
+  /* ==================== 6 · skills marquee ==================== */
+  const skillsBox=document.querySelector('.skills');
+  if(skillsBox){
+    const items=[...skillsBox.querySelectorAll('span')].map(n=>n.textContent.trim());
+    const half=Math.ceil(items.length/2);
+    const rows=[items.slice(0,half),items.slice(half)];
+    const mq=document.createElement('div');mq.className='marquee';
+    rows.forEach((row,ri)=>{
+      const r=document.createElement('div');r.className='mq-row'+(ri?' rev':'');
+      for(let copy=0;copy<2;copy++){
+        const track=document.createElement('div');track.className='mq-track';
+        track.setAttribute('aria-hidden', copy?'true':'false');
+        row.forEach(t=>{const el=document.createElement('span');el.className='mq-item';el.textContent=t;track.appendChild(el);});
+        r.appendChild(track);
+      }
+      mq.appendChild(r);
+    });
+    skillsBox.replaceWith(mq);
+  }
+
+  /* ==================== 7 · tilt + spotlight cards ==================== */
+  const tcards=[...document.querySelectorAll('.tcard')];
+  tcards.forEach(card=>{
+    const edge=document.createElement('div');edge.className='tc-edge';edge.setAttribute('aria-hidden','true');
+    card.appendChild(edge);
+    const max = card.classList.contains('card') ? 6.5 : 2.6;
+    let raf=null,pending=null;
+    const apply=()=>{
+      raf=null;
+      if(!pending) return;
+      const {x,y,w,h}=pending;
+      card.style.setProperty('--mx',x+'px');
+      card.style.setProperty('--my',y+'px');
+      if(!card.classList.contains('open')){
+        const rx=((y/h)-.5)*-2*max, ry=((x/w)-.5)*2*max;
+        card.style.transform=`perspective(1100px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+      }
+    };
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      pending={x:e.clientX-r.left,y:e.clientY-r.top,w:r.width,h:r.height};
+      if(!raf) raf=requestAnimationFrame(apply);
+    },{passive:true});
+    card.addEventListener('mouseleave',()=>{
+      card.classList.add('resetting');
+      card.style.transform='';
+      setTimeout(()=>card.classList.remove('resetting'),700);
+    });
+  });
+
+  /* ==================== 8 · expandable projects ==================== */
+  function paintToggle(btn){
+    const open=btn.getAttribute('aria-expanded')==='true';
+    const lab=btn.querySelector('.p-toggle-label');
+    if(open) lab.textContent = (lang==='fr') ? btn.dataset.openFr : btn.dataset.openEn;
+    else lab.innerHTML = (lang==='fr') ? lab.dataset.fr : lab.dataset.en;
+  }
+  const toggles=[...document.querySelectorAll('.p-toggle')];
+  toggles.forEach(btn=>{
+    const art=btn.closest('.project');
+    const det=art.querySelector('.p-detail'), inner=art.querySelector('.p-detail-inner');
+    let isOpen=false;
+    const flip=()=>{
+      isOpen=!isOpen;
+      btn.setAttribute('aria-expanded',isOpen?'true':'false');
+      paintToggle(btn);
+      if(isOpen){
+        art.classList.add('open'); art.style.transform='';
+        det.style.height=inner.offsetHeight+'px';
+        const done=e=>{
+          if(e.target!==det||e.propertyName!=='height') return;
+          det.removeEventListener('transitionend',done);
+          if(isOpen) det.style.height='auto';
+        };
+        det.addEventListener('transitionend',done);
+      }else{
+        det.style.height=inner.offsetHeight+'px';
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          if(isOpen) return;
+          art.classList.remove('open'); det.style.height='0px';
+        }));
+      }
+    };
+    btn.addEventListener('click',e=>{e.stopPropagation();flip();});
+    const head=art.querySelector('.p-head');
+    if(head) head.addEventListener('click',flip);
+  });
+
+  /* re-run anything the language switch overwrites */
+  window.__afterLang=function(){
+    if(!reduce) buildHeads();
+    toggles.forEach(paintToggle);
+    const eg=document.getElementById('egg');
+    if(window.__eggRelang && eg && eg.classList.contains('open')) window.__eggRelang();
+  };
+
+  /* stagger the figures inside each project */
+  document.querySelectorAll('.project').forEach(art=>{
+    art.querySelectorAll('.p-figure').forEach((f,i)=>{f.style.transitionDelay=(0.12+i*0.11).toFixed(2)+'s';});
+  });
+
+  /* ==================== 9 · magnetic buttons ==================== */
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches && !reduce){
+    document.querySelectorAll('.btn').forEach(bt=>{
+      bt.addEventListener('mousemove',e=>{
+        const r=bt.getBoundingClientRect();
+        const dx=e.clientX-(r.left+r.width/2), dy=e.clientY-(r.top+r.height/2);
+        bt.style.transform=`translate(${(dx*0.16).toFixed(1)}px,${(dy*0.26).toFixed(1)}px)`;
+      },{passive:true});
+      bt.addEventListener('mouseleave',()=>{bt.style.transform='';});
+    });
+  }
+
+  /* ==================== 10 · footer-crest easter egg ==================== */
+  (function(){
+    const eggBtn=document.getElementById('eggBtn'), egg=document.getElementById('egg');
+    if(!eggBtn||!egg) return;
+    const title=document.getElementById('eggTitle');
+    const GL='ABCDEFGHIJKLMNOPQRSTUVWXYZ/\\|<>-_';
+    let scrambleRAF=null;
+    function decryptTitle(){
+      const target=(lang==='fr'?title.dataset.fr:title.dataset.en)||title.textContent;
+      if(reduce){title.textContent=target;return;}
+      const t0=performance.now(), dur=900; let lastPaint=0;
+      cancelAnimationFrame(scrambleRAF);
+      const step=now=>{
+        const k=Math.min(1,(now-t0)/dur);
+        if(now-lastPaint>48||k===1){
+          lastPaint=now;
+          const shown=Math.floor(k*target.length);
+          let out='';
+          for(let i=0;i<target.length;i++)
+            out += (i<shown||target[i]===' ') ? target[i] : GL[(Math.random()*GL.length)|0];
+          title.textContent=out;
+        }
+        if(k<1) scrambleRAF=requestAnimationFrame(step); else title.textContent=target;
+      };
+      scrambleRAF=requestAnimationFrame(step);
+    }
+    let lastFocus=null;
+    function open(){
+      lastFocus=document.activeElement;
+      egg.classList.add('open'); egg.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      requestAnimationFrame(()=>{egg.classList.add('show'); decryptTitle();});
+      egg.focus&&egg.setAttribute('tabindex','-1'); egg.focus();
+    }
+    function close(){
+      cancelAnimationFrame(scrambleRAF);
+      egg.classList.remove('show'); egg.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      setTimeout(()=>egg.classList.remove('open'),500);
+      if(lastFocus&&lastFocus.focus) lastFocus.focus();
+    }
+    eggBtn.addEventListener('click',e=>{e.preventDefault();open();});
+    egg.addEventListener('click',close);
+    addEventListener('keydown',e=>{if(e.key==='Escape'&&egg.classList.contains('open'))close();});
+    window.__eggRelang=decryptTitle;
+  })();
+
 </script>
 </body>
 </html>
