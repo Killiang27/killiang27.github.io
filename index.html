@@ -352,13 +352,7 @@
   @keyframes gridDrift{to{background-position:64px 64px}}
   body.dark .about-bg{opacity:.07}
 
-  /* Stats: a slow telemetry-style scan sweep */
   .stats-sec{position:relative;overflow:hidden}
-  .stats-bg::before{content:'';position:absolute;top:0;bottom:0;left:-160px;width:140px;
-    background:linear-gradient(90deg,transparent,rgba(23,21,15,.06),transparent);
-    animation:scan 10s ease-in-out infinite}
-  @keyframes scan{0%{left:-160px}100%{left:100%}}
-  body.dark .stats-bg::before{background:linear-gradient(90deg,transparent,rgba(241,236,223,.07),transparent)}
 
   /* Projects: quiet vignette so the cards stay the focus */
   #projects{position:relative;overflow:hidden}
@@ -372,7 +366,7 @@
     transform:scaleY(0);transform-origin:top;pointer-events:none}
 
   @media(prefers-reduced-motion:reduce){
-    .hero-bg span,.about-bg,.stats-bg::before{animation:none !important}
+    .hero-bg span,.about-bg{animation:none !important}
     #experience .timeline-glow{transition:none !important}
   }
   @media(max-width:560px){
@@ -478,6 +472,8 @@
     -webkit-backdrop-filter:blur(16px) saturate(120%);backdrop-filter:blur(16px) saturate(120%);
     opacity:0;transition:opacity .5s ease}
   #egg.open{display:flex}
+  #eggParticles{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .egg-card{z-index:1}
   #egg.show{opacity:1}
   .egg-card{position:relative;width:min(520px,88vw);padding:54px 44px 44px;text-align:center;
     border:1px solid var(--silver-line);background:var(--ivory);
@@ -587,6 +583,7 @@
   <div class="progress" id="prog"></div>
 </header>
 <div id="egg" role="dialog" aria-modal="true" aria-labelledby="eggTitle" aria-hidden="true">
+  <canvas id="eggParticles" aria-hidden="true"></canvas>
   <div class="egg-card">
     <span class="egg-tick tl"></span><span class="egg-tick tr"></span>
     <span class="egg-tick bl"></span><span class="egg-tick br"></span>
@@ -651,7 +648,6 @@
 
 <!-- STATS -->
 <section class="stats-sec">
-  <div class="sec-bg stats-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="stats">
       <div class="stat"><div class="num" data-target="0.07" data-dec="2" data-prefix="&lt; " data-suffix="%">&lt; 0.07%</div><div class="lbl" data-fr="Erreur de prévision de capacité (MAPE)">Battery forecast error (MAPE)</div></div>
@@ -1271,6 +1267,7 @@
       lastFocus=document.activeElement;
       egg.classList.add('open'); egg.setAttribute('aria-hidden','false');
       document.body.style.overflow='hidden';
+      if(window.__eggParticles) window.__eggParticles.start();
       requestAnimationFrame(()=>{egg.classList.add('show'); decryptTitle();});
       egg.focus&&egg.setAttribute('tabindex','-1'); egg.focus();
     }
@@ -1278,13 +1275,92 @@
       cancelAnimationFrame(scrambleRAF);
       egg.classList.remove('show'); egg.setAttribute('aria-hidden','true');
       document.body.style.overflow='';
-      setTimeout(()=>egg.classList.remove('open'),500);
+      setTimeout(()=>{egg.classList.remove('open'); if(window.__eggParticles) window.__eggParticles.stop();},500);
       if(lastFocus&&lastFocus.focus) lastFocus.focus();
     }
     eggBtn.addEventListener('click',e=>{e.preventDefault();open();});
     egg.addEventListener('click',close);
     addEventListener('keydown',e=>{if(e.key==='Escape'&&egg.classList.contains('open'))close();});
     window.__eggRelang=decryptTitle;
+  })();
+
+  /* ==================== 11 · easter-egg particle field ====================
+     Vanilla-canvas port of the ReactBits <Particles /> component:
+     count 200 · spread 10 · speed 0.1 · baseSize 100 · sizeRandomness 1
+     cameraDistance 20 · rotation on · hover off · opaque particles.
+     Colours are pulled live from the site's own CSS tokens.            */
+  (function(){
+    const egg=document.getElementById('egg'), cv=document.getElementById('eggParticles');
+    if(!egg||!cv) return;
+    const ctx=cv.getContext('2d');
+    const N=200, SPREAD=10, SPEED=0.1, BASE=100, SIZE_RAND=1, CAM=20, TAU=6.2831853;
+    let parts=[], raf=null, t0=0, W=0, H=0, colors=[];
+
+    function readColors(){
+      const cs=getComputedStyle(document.body);
+      const pick=(v,f)=>(cs.getPropertyValue(v)||'').trim()||f;
+      colors=[pick('--gold','#B7A26B'), pick('--silver','#9A9A93'), pick('--graphite','#6B6E70')];
+    }
+    function resize(){
+      const dpr=Math.min(window.devicePixelRatio||1,2);
+      W=egg.clientWidth; H=egg.clientHeight;
+      if(!W||!H) return;
+      cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    function seed(){
+      parts=[];
+      for(let i=0;i<N;i++){
+        let x,y,z,len;
+        do{x=Math.random()*2-1;y=Math.random()*2-1;z=Math.random()*2-1;len=x*x+y*y+z*z;}
+        while(len>1||len===0);
+        const r=Math.cbrt(Math.random());
+        parts.push({x:x*r,y:y*r,z:z*r,
+          a:Math.random(),b:Math.random(),c:Math.random(),d:Math.random(),
+          col:colors[(Math.random()*colors.length)|0]});
+      }
+    }
+    function draw(now){
+      if(!t0) t0=now;
+      const el=now-t0, t=el*0.001*SPEED;
+      const rx=Math.sin(el*0.0002)*0.1, ry=Math.cos(el*0.0005)*0.15, rz=el*0.0006*SPEED;
+      const f=H*1.25, cx=W/2, cy=H/2;
+      ctx.clearRect(0,0,W,H);
+      ctx.globalAlpha=document.body.classList.contains('dark')?0.78:0.6;
+      for(let i=0;i<parts.length;i++){
+        const p=parts[i];
+        let x=p.x*SPREAD, y=p.y*SPREAD, z=p.z*SPREAD, s1,c1,X,Y,Z;
+        c1=Math.cos(rz); s1=Math.sin(rz); X=x*c1-y*s1; Y=x*s1+y*c1; x=X; y=Y;
+        c1=Math.cos(rx); s1=Math.sin(rx); Y=y*c1-z*s1; Z=y*s1+z*c1; y=Y; z=Z;
+        c1=Math.cos(ry); s1=Math.sin(ry); X=x*c1+z*s1; Z=-x*s1+z*c1; x=X; z=Z;
+        x+=Math.cos(t*p.c+TAU*p.d)*(0.1+p.a*1.4);
+        y+=Math.sin(t*p.b+TAU*p.a)*(0.1+p.c*1.4);
+        z+=Math.sin(t*p.d+TAU*p.b)*(0.1+p.b*1.4);
+        const depth=CAM+z;
+        if(depth<=0.5) continue;
+        const sx=cx+(x*f)/depth, sy=cy-(y*f)/depth;
+        if(sx<-24||sx>W+24||sy<-24||sy>H+24) continue;
+        const rad=Math.max(0.35,(BASE*(1+(p.a-0.5)*SIZE_RAND)*(f/1000))/depth/2);
+        ctx.fillStyle=p.col;
+        ctx.beginPath(); ctx.arc(sx,sy,rad,0,TAU); ctx.fill();
+      }
+      ctx.globalAlpha=1;
+      raf=requestAnimationFrame(draw);
+    }
+    const onResize=()=>{resize();};
+    window.__eggParticles={
+      start(){
+        readColors(); resize(); seed(); t0=0;
+        addEventListener('resize',onResize);
+        if(reduce){ draw(performance.now()); cancelAnimationFrame(raf); raf=null; return; }
+        cancelAnimationFrame(raf); raf=requestAnimationFrame(draw);
+      },
+      stop(){
+        cancelAnimationFrame(raf); raf=null;
+        removeEventListener('resize',onResize);
+        if(W&&H) ctx.clearRect(0,0,W,H);
+      }
+    };
   })();
 
 </script>
