@@ -122,7 +122,7 @@
   }
   header.nav.scrolled{border-bottom:1px solid var(--silver-line)}
   /* scroll progress hairline */
-  .progress{position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--graphite);transition:width .1s linear}
+  .progress{position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--graphite);transform:scaleX(0);transform-origin:left;transition:transform .1s linear}
   /* active nav link */
   .nav-links a.active{color:var(--ink)}
   .nav-links a.active::before{content:"";position:absolute;left:-12px;top:50%;width:4px;height:4px;border-radius:50%;background:var(--silver);transform:translateY(-50%)}
@@ -330,7 +330,7 @@
   .hero{overflow:hidden}
   .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .hero-bg span{position:absolute;border-radius:50%;filter:blur(70px);opacity:.4;
-    background:radial-gradient(circle,var(--silver),transparent 70%);animation:auroraDrift 26s ease-in-out infinite}
+    background:radial-gradient(circle,var(--silver),transparent 70%)}
   .hero-bg span:nth-child(1){width:440px;height:440px;top:-160px;left:-80px}
   .hero-bg span:nth-child(2){width:340px;height:340px;top:60px;right:-100px;
     background:radial-gradient(circle,#B7A26B,transparent 70%);opacity:.16;animation-duration:32s;animation-delay:-8s}
@@ -348,7 +348,7 @@
   .about-bg{background-image:
       linear-gradient(var(--silver-line) 1px,transparent 1px),
       linear-gradient(90deg,var(--silver-line) 1px,transparent 1px);
-    background-size:64px 64px;opacity:.14;animation:gridDrift 44s linear infinite}
+    background-size:64px 64px;opacity:.14;inset:-80px 0}
   @keyframes gridDrift{to{background-position:64px 64px}}
   body.dark .about-bg{opacity:.07}
 
@@ -541,6 +541,122 @@
     .figrow-even .p-figure img{height:auto;width:100%}
     .xp{grid-template-columns:1fr;gap:8px}
   }
+
+  /* ================= v2: Jarvis HUD, glass, sketches, touch ================= */
+  .hud{position:relative;width:100%;max-width:520px;margin-top:60px;padding:22px 24px 28px;
+    background:color-mix(in srgb,var(--ivory) 58%,transparent);
+    -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);
+    border:1px solid color-mix(in srgb,var(--silver-line) 85%,transparent);border-radius:3px;
+    box-shadow:0 30px 70px -30px rgba(23,21,15,.22),inset 0 1px 0 color-mix(in srgb,#fff 55%,transparent);overflow:hidden}
+  body.dark .hud{box-shadow:0 30px 70px -30px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.04)}
+  .hud::after{content:"";position:absolute;inset:6px;border:1px solid color-mix(in srgb,var(--silver) 22%,transparent);pointer-events:none}
+  .hud-tick{position:absolute;width:11px;height:11px;border:0 solid var(--gold);opacity:.8}
+  .hud-tick.tl{top:12px;left:12px;border-top-width:1px;border-left-width:1px}
+  .hud-tick.tr{top:12px;right:12px;border-top-width:1px;border-right-width:1px}
+  .hud-tick.bl{bottom:12px;left:12px;border-bottom-width:1px;border-left-width:1px}
+  .hud-tick.br{bottom:12px;right:12px;border-bottom-width:1px;border-right-width:1px}
+  .hud-top{display:flex;align-items:center;gap:10px;padding:0 6px 14px;border-bottom:1px solid var(--silver-line)}
+  .hud-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 color-mix(in srgb,var(--gold) 60%,transparent);animation:hudPulse 2.4s ease-out infinite}
+  @keyframes hudPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--gold) 55%,transparent)}100%{box-shadow:0 0 0 9px transparent}}
+  .hud-label,.hud-clock,.hud-rows dt,.hud-cap,.hud-log{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .hud-label{flex:1;color:var(--ink-soft)}
+  .hud-clock{font-variant-numeric:tabular-nums;letter-spacing:.14em}
+  .hud-main{display:grid;grid-template-columns:132px 1fr;gap:22px;align-items:center;padding:18px 6px 6px}
+  .hud-ring{position:relative;width:132px;height:132px}
+  .hud-ring svg{width:100%;height:100%;display:block;overflow:visible}
+  .hud-ring .r-arc{transition:stroke-dashoffset 2.2s cubic-bezier(.2,.65,.2,1)}
+  .hud-ring-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .hud-ring-c b{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:30px;line-height:1;color:var(--ink)}
+  .hud-ring-c small{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .hud-rows{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:baseline}
+  .hud-rows dt{font-size:9px}
+  .hud-rows dd{font-family:"Cormorant Garamond",Georgia,serif;font-size:17px;line-height:1.2;color:var(--ink)}
+  .hud-spark{margin:14px 6px 0;padding-top:12px;border-top:1px solid var(--silver-line)}
+  .hud-spark svg{width:100%;height:46px;display:block;overflow:visible}
+  .hud-spark .sp-line{stroke-dasharray:420;stroke-dashoffset:420;animation:spDraw 2.6s 1.6s cubic-bezier(.2,.65,.2,1) forwards}
+  @keyframes spDraw{to{stroke-dashoffset:0}}
+  .hud-cap{display:flex;justify-content:space-between;margin-top:6px;font-size:8.5px}
+  .hud-log{margin:12px 6px 0;padding-top:12px;border-top:1px solid var(--silver-line);display:grid;gap:5px;letter-spacing:.14em;font-size:9.5px}
+  .hud-log span{opacity:0;animation:logIn .5s ease forwards}
+  .hud-log span:nth-child(1){animation-delay:1.9s}.hud-log span:nth-child(2){animation-delay:2.4s}.hud-log span:nth-child(3){animation-delay:2.9s}
+  .hud-log span::before{content:"› ";color:var(--gold)}
+  .hud-log em{font-style:normal;color:var(--ink-soft)}
+  @keyframes logIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+  @media(min-width:1180px){
+    .hero .wrap{min-height:640px}
+    .hud{position:absolute;top:118px;right:40px;width:390px;margin-top:0}
+    .hero-lead{max-width:600px}
+  }
+  @media(max-width:560px){.hud-main{grid-template-columns:104px 1fr;gap:16px}.hud-ring{width:104px;height:104px}.hud-ring-c b{font-size:24px}}
+
+  /* glass surfaces over the moving backgrounds */
+  .projects-orbs span{opacity:.32}
+  .projects-orbs span:nth-child(1){top:8%;left:-120px}
+  .projects-orbs span:nth-child(2){top:40%;right:-120px;opacity:.14}
+  .projects-orbs span:nth-child(3){bottom:4%;left:30%}
+  body.dark .projects-orbs span{opacity:.16}
+  .project{background:color-mix(in srgb,var(--ivory) 66%,transparent);
+    -webkit-backdrop-filter:blur(14px) saturate(130%);backdrop-filter:blur(14px) saturate(130%)}
+  body.dark .project{background:color-mix(in srgb,var(--ivory) 70%,transparent)}
+  .glance{background:color-mix(in srgb,var(--ivory) 62%,transparent);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border:1px solid var(--silver-line);padding:26px 30px 28px;border-radius:3px;align-self:start}
+  .card{background:color-mix(in srgb,var(--ivory) 60%,transparent);
+    -webkit-backdrop-filter:blur(16px) saturate(130%);backdrop-filter:blur(16px) saturate(130%)}
+  body.dark .card{background:color-mix(in srgb,var(--ivory) 66%,transparent)}
+  .stats{background:color-mix(in srgb,var(--ivory) 50%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+  /* project preview sketches */
+  .project{grid-template-columns:64px 1fr 190px}
+  .p-sketch{grid-column:3;grid-row:1;align-self:start;color:var(--graphite);border:1px solid var(--silver-line);border-radius:2px;
+    padding:12px 12px 8px;background:color-mix(in srgb,var(--ivory-deep) 55%,transparent);
+    transition:opacity .5s ease,transform .6s cubic-bezier(.2,.65,.2,1),border-color .5s ease;cursor:pointer}
+  .p-sketch svg{width:100%;height:auto;display:block;overflow:visible}
+  .p-sketch .g{stroke:var(--gold)}
+  .p-sketch .gf{fill:var(--gold)}
+  .p-sketch .dash{stroke-dasharray:3 3}
+  .p-sketch figcaption{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:6px;text-align:right}
+  .p-sketch .draw{stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.65,.2,1)}
+  .project.in .p-sketch .draw,.project:hover .p-sketch .draw{stroke-dashoffset:0}
+  .project:hover .p-sketch{border-color:color-mix(in srgb,var(--gold) 50%,var(--silver-line));transform:translateY(-3px)}
+  .project.open .p-sketch{opacity:.4}
+
+
+  /* v2 motion: waterfall reveals, scroll-linked depth, settled hero */
+  .hero .anim.settled{animation:none !important;opacity:1 !important}
+  .hud,.hero-bg span,.about-bg{will-change:transform}
+  .project.in .p-sketch .draw{transition-delay:.45s}
+  .project:hover .p-sketch .draw{transition-delay:0s}
+  .stat.reveal{transform:translateY(16px)}
+  .stat.reveal.in{transform:none}
+  /* comfortable touch targets */
+  .chip{min-height:40px;padding:12px 18px}
+  .tbtn{min-width:40px;min-height:40px;justify-content:center}
+  .menu-btn{min-width:44px;min-height:44px}
+  .p-toggle{min-height:40px}
+  .p-repo{min-height:36px}
+  .card dd a{display:inline-block;padding:6px 0}
+
+  @media(max-width:860px){
+    .project{grid-template-columns:1fr 112px;gap:14px 16px}
+    .p-num{grid-column:1;grid-row:1}
+    .p-sketch{grid-column:2;grid-row:1;padding:8px 8px 4px}
+    .p-sketch figcaption{display:none}
+    .p-body{grid-column:1 / -1;grid-row:3}
+    .glance{border:1px solid var(--silver-line);padding:22px 22px 24px}
+  }
+  @media(max-width:560px){
+    .brand{font-size:11.5px;letter-spacing:.2em}
+    .nav-right{gap:8px}.nav-tools{gap:2px}
+  }
+  @media(max-width:420px){.nav-crest{display:none}}
+  @media(prefers-reduced-motion:reduce){
+    .hud-dot{animation:none !important}
+    .hud-spark .sp-line{animation:none;stroke-dashoffset:0}
+    .hud-log span{animation:none;opacity:1}
+    .p-sketch .draw{transition:none;stroke-dashoffset:0}
+    .p-sketch{transition:none}
+  }
 </style>
 </head>
 <body>
@@ -608,16 +724,53 @@
 <section class="hero">
   <div class="hero-bg" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap">
-    <div class="masthead anim a1"><span class="edge" data-fr="Londres · Madrid">London · Madrid</span><span class="mid">Portfolio</span><span class="edge edge2">2026</span></div>
-    <p class="eyebrow anim a2" data-fr="Fintech · Ingénierie mécatronique · Machine learning · Londres &amp; Madrid">Fintech · Mechatronics Engineering · Machine Learning · London &amp; Madrid</p>
+    <div class="masthead anim a1"><span class="edge" data-fr="Madrid · Londres">Madrid · London</span><span class="mid">Portfolio</span><span class="edge edge2">2026</span></div>
+    <p class="eyebrow anim a2" data-fr="MSc Fintech · IE Business School · Machine learning · Ingénierie">MSc Fintech · IE Business School · Machine Learning · Engineering</p>
     <h1 class="anim a2">Killian<br><span class="last">Gerard</span></h1>
-    <p class="hero-nat anim a2" data-fr="Binational franco-britannique · Trilingue">Dual French &amp; British national · Trilingual</p>
-    <p class="hero-lead anim a3" data-fr="Je suis diplômé d'un BEng en mécatronique, Second Class Honours (Division One), et j'aime mener une idée jusqu'à un prototype qui fonctionne. Mes projets vont de la robotique embarquée et de l'analyse vibratoire des trains à grande vitesse aux modèles de <span class='serif'>machine learning</span> qui prédisent la durée de vie d'un équipement. J'ai passé deux étés au cœur d'opérations énergétiques en activité, et cet été j'ai suivi l'école d'été d'<span class='serif'>IE Madrid</span> en fondamentaux de la finance, avant d'y entamer le MSc en Fintech que je suis actuellement.">I am a Mechatronics&nbsp;BEng graduate, Second Class Honours (Division One), who likes taking an idea all the way to a working build. My work runs from embedded robotics and high-speed-rail vibration analysis to <span class="serif">machine-learning</span> models that forecast how long an asset will last. I spent two summers inside live energy operations, and this summer I completed <span class="serif">IE Madrid</span>'s Summer School in Finance Fundamentals and I am now studying for the MSc in Fintech there.</p>
+    <p class="hero-nat anim a2" data-fr="Étudiant en MSc Fintech · Binational franco-britannique · Trilingue">Fintech MSc candidate · Dual French &amp; British national · Trilingual</p>
+    <p class="hero-lead anim a3" data-fr="Je prépare le MSc en Fintech d'<span class='serif'>IE Business School</span> à Madrid, après un BEng (Hons) en ingénierie mécatronique à l'université de Lancaster (mention 2:1). J'aime mener une idée jusqu'à un résultat concret : des modèles de <span class='serif'>machine learning</span> qui prédisent la durée de vie d'un actif, l'analyse vibratoire des trains à grande vitesse, et deux étés au cœur d'opérations énergétiques chez Vitol et Vivo Energy (licencié Shell). Aujourd'hui, j'applique cette rigueur quantitative à la finance.">I am studying for the MSc in Fintech at <span class="serif">IE Business School</span> in Madrid, after a Mechatronics Engineering BEng (Hons, 2:1) at Lancaster University. I like taking an idea all the way to a working result: <span class="serif">machine-learning</span> models that forecast how long an asset will last, vibration analysis for high-speed rail, and two summers inside live energy operations at Vitol and Vivo Energy (Shell licensee). Now I am bringing that quantitative discipline to finance.</p>
     <div class="hero-cta anim a4">
       <a href="#projects" class="btn" data-fr="Voir les projets">View Projects</a>
       <a href="assets/Killian-Gerard-Portfolio.pdf" class="btn ghost" target="_blank" data-fr="Télécharger le portfolio">Download Portfolio</a>
       <a href="assets/Killian-Gerard-CV.pdf" class="btn ghost" target="_blank" data-fr="Télécharger le CV">Download CV</a>
     </div>
+    <aside class="hud anim a4" aria-label="Profile overview">
+      <span class="hud-tick tl"></span><span class="hud-tick tr"></span><span class="hud-tick bl"></span><span class="hud-tick br"></span>
+      <div class="hud-top"><span class="hud-dot" aria-hidden="true"></span><span class="hud-label" data-fr="KG · Vue d'ensemble">KG · System overview</span><span class="hud-clock" id="hudClock">MAD --:--</span></div>
+      <div class="hud-main">
+        <div class="hud-ring">
+          <svg viewBox="0 0 132 132" aria-hidden="true">
+            <circle cx="66" cy="66" r="62" fill="none" stroke="var(--silver-line)" stroke-width="1"/>
+            <g class="r-spin"><circle cx="66" cy="66" r="56" fill="none" stroke="var(--silver)" stroke-width="1" stroke-dasharray="1 5.6" opacity=".8"/></g>
+            <g class="r-spin2"><circle cx="66" cy="66" r="48" fill="none" stroke="var(--silver-line)" stroke-width="1" stroke-dasharray="22 8 2 8"/></g>
+            <circle cx="66" cy="66" r="62" fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round" class="r-arc" id="hudArc"
+              stroke-dasharray="389.6" stroke-dashoffset="389.6" transform="rotate(-90 66 66)"/>
+          </svg>
+          <div class="hud-ring-c"><b id="hudPct">0%</b><small data-fr="MSc Fintech">MSc Fintech</small></div>
+        </div>
+        <dl class="hud-rows">
+          <dt data-fr="Statut">Status</dt><dd data-fr="Étudiant, IE Business School">Student, IE Business School</dd>
+          <dt data-fr="Domaine">Focus</dt><dd>Fintech · ML · Robotics</dd>
+          <dt data-fr="Base">Base</dt><dd>Madrid · 40.42°N</dd>
+          <dt data-fr="Langues">Lang</dt><dd>FR · EN · ES</dd>
+        </dl>
+      </div>
+      <div class="hud-spark" aria-hidden="true">
+        <svg viewBox="0 0 340 46" preserveAspectRatio="none">
+          <path d="M0 45 H340" stroke="var(--silver-line)" stroke-width="1" fill="none"/>
+          <path class="sp-line" d="M0 8 C40 9 70 10 110 12 S170 16 200 19 S245 26 262 31 S290 40 340 44" stroke="var(--ink-soft)" stroke-width="1.2" fill="none" vector-effect="non-scaling-stroke"/>
+          <path d="M262 31 C280 36 300 39 340 41" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="3 3" fill="none" vector-effect="non-scaling-stroke"/>
+          <circle cx="262" cy="31" r="2.6" fill="var(--gold)"/>
+        </svg>
+        <div class="hud-cap"><span data-fr="Trace illustrative · courbe de vieillissement">Illustrative trace · capacity fade</span><span data-fr="point de rupture">knee point</span></div>
+      </div>
+      <div class="hud-log">
+        <span data-fr="Profil chargé · <em>ingénierie → finance</em>">Profile loaded · <em>engineering → finance</em></span>
+        <span data-fr="MSc Fintech · <em>en cours</em>">MSc Fintech · <em>in progress</em></span>
+        <span data-fr="Ouvert à · <em>fintech, data, ingénierie</em>">Open to · <em>fintech, data, engineering</em></span>
+      </div>
+    </aside>
+
   </div>
 </section>
 
@@ -625,22 +778,22 @@
 <section id="about">
   <div class="sec-bg about-bg" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="sec-head"><h2 data-fr="L'ingénierie, de bout en bout">Engineering, end to end</h2><span class="idx" data-fr="01 · À propos">01 · About</span></div>
+    <div class="sec-head"><h2 data-fr="De l'ingénierie à la finance">From engineering to finance</h2><span class="idx" data-fr="01 · À propos">01 · About</span></div>
     <div class="about-grid">
       <div>
-        <p data-fr="Je suis diplômé en <span class='serif'>ingénierie mécatronique</span> de l'université de Lancaster, Second Class Honours (Division One), avec de solides bases dans les fondamentaux de l'ingénierie et l'habitude de mener un projet du concept jusqu'à un prototype fonctionnel : conception mécanique, contrôle embarqué, simulation et essais.">I am a <span class="serif">Mechatronics Engineering</span> graduate, Second Class Honours (Division One), from Lancaster University with a foundation in engineering first principles and a habit of taking projects from concept to a working build, covering mechanical design, embedded control, simulation and testing.</p>
-        <p data-fr="Mon travail le plus exigeant se situe à la rencontre du matériel et des données : un <span class='serif'>modèle LSTM</span> qui prédit la durée de vie restante de batteries lithium-ion à une fraction de pourcent près, et un concept de suspension à analyse vibratoire pour train à grande vitesse, avec détection d'anomalies par machine learning. En parallèle de mes études, j'ai réalisé deux stages dans des opérations énergétiques en activité : <span class='serif'>Vitol</span> sur des turbines à gaz au Royaume-Uni, puis <span class='serif'>VIVO Energy (licencié Shell)</span> sur des infrastructures GPL et pétrolières au Maroc, où j'ai appris la modélisation CAPEX/OPEX et la prévision de la demande sur le terrain.">My most rigorous work sits at the meeting point of hardware and data: an <span class="serif">LSTM model</span> predicting the remaining useful life of lithium-ion batteries to within a fraction of a percent, and a vibration-analysis suspension concept for high-speed rail with machine-learning anomaly detection. Alongside my degree I completed two internships in live energy operations: <span class="serif">Vitol</span> on UK gas turbines, then <span class="serif">VIVO Energy (Shell licensee)</span> on LPG and oil infrastructure in Morocco, where I learned CAPEX/OPEX modelling and demand forecasting in the field.</p>
-        <p data-fr="Ce mélange de rigueur d'ingénieur et de modélisation quantitative est ce qui m'attire vers la <span class='serif'>finance quantitative</span>. Cet été, j'ai suivi l'école d'été d'IE Madrid en fondamentaux de la finance, et je suis désormais le MSc Fintech d'IE Madrid.">That blend of engineering discipline and quantitative modelling is what draws me toward <span class="serif">quantitative finance</span>. This summer I completed IE Madrid's Summer School in Finance Fundamentals, and I am now studying for IE Madrid's MSc in Fintech.</p>
+        <p data-fr="Je suis étudiant en <span class='serif'>MSc Fintech</span> à IE Business School, à Madrid, et diplômé d'un BEng (Hons) en ingénierie mécatronique de l'université de Lancaster, avec une mention Upper Second Class (2:1). Ma formation d'ingénieur m'a donné de solides bases dans les fondamentaux et l'habitude de mener un projet du concept jusqu'à un prototype fonctionnel : conception mécanique, contrôle embarqué, simulation et essais.">I am an <span class="serif">MSc Fintech</span> student at IE Business School in Madrid and a Mechatronics Engineering graduate from Lancaster University, with Upper Second Class Honours (2:1). Engineering gave me a grounding in first principles and a habit of taking projects from concept to a working build, covering mechanical design, embedded control, simulation and testing.</p>
+        <p data-fr="Mon travail le plus exigeant se situe à la rencontre du matériel et des données : un <span class='serif'>modèle LSTM</span> qui prédit la durée de vie restante de batteries lithium-ion à une fraction de pourcent près, et un concept de suspension à analyse vibratoire pour train à grande vitesse, avec détection d'anomalies par machine learning. En parallèle de mes études, j'ai réalisé deux stages dans des opérations énergétiques en activité : <span class='serif'>Vitol</span> sur des turbines à gaz au Royaume-Uni, puis <span class='serif'>VIVO Energy (licencié Shell)</span> sur des infrastructures GPL et pétrolières au Maroc, où j'ai analysé des modèles CAPEX/OPEX avec des ingénieurs seniors, notamment la prévision de la demande pétrolière et l'analyse des réserves de stockage.">My most rigorous work sits at the meeting point of hardware and data: an <span class="serif">LSTM model</span> predicting the remaining useful life of lithium-ion batteries to within a fraction of a percent, and a vibration-analysis suspension concept for high-speed rail with machine-learning anomaly detection. Alongside my degree I completed two internships in live energy operations: <span class="serif">Vitol</span> on UK gas turbines, then <span class="serif">VIVO Energy (Shell licensee)</span> on LPG and oil infrastructure in Morocco, where I analysed CAPEX/OPEX models with senior engineers, covering oil-demand forecasts and tank-reserve analytics.</p>
+        <p data-fr="Ce mélange de rigueur d'ingénieur et de modélisation quantitative est ce qui m'attire vers la <span class='serif'>finance quantitative</span>. En juillet 2026, j'ai suivi l'école d'été d'IE en fondamentaux de la finance, puis j'ai commencé le MSc Fintech d'IE Business School en septembre.">That blend of engineering discipline and quantitative modelling is what draws me toward <span class="serif">quantitative finance</span>. In July 2026 I completed IE's Summer School in Finance Fundamentals, and in September I started the MSc in Fintech at IE Business School.</p>
       </div>
       <dl class="glance">
         <div class="eyebrow" data-fr="En bref">At a glance</div>
-        <dt data-fr="Domaine">Focus</dt><dd data-fr="Machine learning et mécatronique">Machine learning &amp; mechatronics</dd>
-        <dt data-fr="Diplôme">Degree</dt><dd data-fr="BEng (Hons) en ingénierie mécatronique, Second Class Honours (Division One)">Mechatronics Engineering BEng (Hons), Second Class Honours (Division One)</dd>
-        <dt data-fr="Université">University</dt><dd data-fr="Université de Lancaster">Lancaster University</dd>
-        <dt data-fr="Récemment">Recently</dt><dd data-fr="École d'été IE Madrid, fondamentaux de la finance (2026)">IE Madrid Summer School, Finance Fundamentals (2026)</dd>
-        <dt data-fr="Prochaine étape">Next</dt><dd data-fr="MSc Fintech, IE Madrid (sept. 2026)">MSc Fintech, IE Madrid (Sept 2026)</dd>
-        <dt data-fr="Langues">Languages</dt><dd data-fr="Français et anglais (langues maternelles), espagnol (courant)">French &amp; English (native), Spanish (proficient)</dd>
-        <dt data-fr="Localisation">Location</dt><dd data-fr="Londres · Madrid">London · Madrid</dd>
+        <dt data-fr="Actuellement">Now</dt><dd data-fr="MSc Fintech, IE Business School, Madrid (depuis sept. 2026)">MSc Fintech, IE Business School, Madrid (from Sept 2026)</dd>
+        <dt data-fr="Domaine">Focus</dt><dd data-fr="Fintech, machine learning et robotique">Fintech, machine learning &amp; robotics</dd>
+        <dt data-fr="Diplôme">Degree</dt><dd data-fr="BEng (Hons) en ingénierie mécatronique, Upper Second Class (2:1), université de Lancaster">BEng (Hons) Mechatronics Engineering, Upper Second Class (2:1), Lancaster University</dd>
+        <dt data-fr="Récemment">Recently</dt><dd data-fr="École d'été IE, fondamentaux de la finance (juillet 2026)">IE Summer School, Finance Fundamentals (July 2026)</dd>
+        <dt data-fr="Langues">Languages</dt><dd data-fr="Français et anglais (langues maternelles), espagnol (courant) ; arabe, portugais, italien (notions)">French &amp; English (native), Spanish (proficient); Arabic, Portuguese, Italian (elementary)</dd>
+        <dt data-fr="Droit de travail">Work rights</dt><dd data-fr="UE et Royaume-Uni">EU &amp; UK</dd>
+        <dt data-fr="Localisation">Location</dt><dd data-fr="Madrid · Londres">Madrid · London</dd>
       </dl>
     </div>
   </div>
@@ -662,6 +815,7 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="sec-bg projects-bg" aria-hidden="true"></div>
+  <div class="hero-bg projects-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap">
     <div class="sec-head"><h2 data-fr="Travaux choisis">Selected work</h2><span class="idx" data-fr="02 · Projets">02 · Projects</span></div>
 
@@ -675,6 +829,12 @@
     <!-- P1 Battery ML -->
     <article class="project tcard" data-cat="ml">
       <div class="p-num">01</div>
+      <figure class="p-sketch" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8 V96 H190" fill="none" stroke="currentColor" stroke-width="1"/>
+<path d="M14 30 H190 M14 52 H190 M14 74 H190" stroke="currentColor" stroke-width=".5" opacity=".35"/>
+<path class="draw" d="M16 22 C50 24 80 27 104 31 S136 40 146 50 S160 74 168 88" fill="none" stroke="currentColor" stroke-width="1.3"/>
+<path class="g dash" d="M146 50 C156 60 166 70 186 82" fill="none" stroke-width="1.2"/>
+<circle class="gf" cx="146" cy="50" r="3"/>
+<rect x="150" y="12" width="30" height="16" rx="1.5" fill="none" stroke="currentColor"/><rect x="180" y="17" width="3" height="6" fill="currentColor"/><rect x="153" y="15" width="11" height="10" class="gf"/></svg><figcaption data-fr="Courbe de capacité">Capacity fade</figcaption></figure>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 3e année">Third-year project</span><span data-fr="Individuel">Individual</span><span>2025</span></div>
@@ -688,11 +848,11 @@
           <a class="p-repo" href="https://github.com/killiang27/li-ion-battery-rul-prediction" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-fr="Voir le dépôt">View repository</span></a>
           <p class="p-desc" data-fr="J'ai entraîné un LSTM à deux couches sur le jeu de données de décharge de batteries Stanford/MIT pour prédire la perte de capacité au fil du temps et repérer le point de rupture où le déclin s'accélère soudainement, avec une erreur absolue moyenne en pourcentage inférieure à 0,07 %. J'ai aussi développé une interface Gradio pour régler la longueur de séquence, les epochs et la répartition entraînement/test, avec des garde-fous empêchant toute fuite de données entre batteries. La même approche de prévision se transpose directement à la modélisation du risque et du défaut d'actifs.">I trained a two-layer LSTM on the Stanford/MIT battery-discharge dataset to predict how capacity fades over time and to catch the knee-point where decline suddenly accelerates, landing a mean absolute percentage error under 0.07%. I also built a Gradio interface for tuning the sequence length, epochs and train/test split, with guards so the model never leaks data across battery boundaries. The same forecasting idea carries straight over to risk and asset-default modelling.</p>
           <figure class="p-figure">
-          <img src="assets/battery-stanford.png" alt="Feature engineering: capacity plateau vs extracted dQ/dN sensitivity on the Stanford dataset" loading="lazy" />
+          <img src="assets/battery-stanford.webp" alt="Feature engineering: capacity plateau vs extracted dQ/dN sensitivity on the Stanford dataset" loading="lazy" />
           <figcaption>Feature engineering: capacity plateau vs. extracted dQ/dN degradation signal (Stanford dataset)</figcaption>
         </figure>
         <figure class="p-figure">
-          <img src="assets/battery-lstm-code.png" alt="The two-layer LSTM model definition in Keras: stacked LSTM layers with dropout and a dense output" loading="lazy" />
+          <img src="assets/battery-lstm-code.webp" alt="The two-layer LSTM model definition in Keras: stacked LSTM layers with dropout and a dense output" loading="lazy" />
           <figcaption>The model: a two-layer stacked LSTM (64 → 32 units) with dropout, Adam optimiser and MSE loss</figcaption>
         </figure>
         </div></div>
@@ -700,6 +860,13 @@
     </article>
     <article class="project tcard" data-cat="ml cad">
       <div class="p-num">02</div>
+      <figure class="p-sketch" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="8" width="140" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<path class="draw" d="M62 30 l6 4 -12 4 12 4 -12 4 12 4 -6 4 M138 30 l6 4 -12 4 12 4 -12 4 12 4 -6 4" fill="none" stroke="currentColor" stroke-width="1.1"/>
+<rect x="44" y="58" width="112" height="10" fill="none" stroke="currentColor"/>
+<circle cx="62" cy="76" r="8" fill="none" stroke="currentColor"/><circle cx="138" cy="76" r="8" fill="none" stroke="currentColor"/>
+<path d="M14 84 H186" stroke="currentColor"/>
+<path class="draw" d="M14 104 l10 -3 10 4 10 -4 10 3 10 -3 10 4 8 -16 6 24 8 -10 10 3 10 -4 10 4 10 -3 10 3 10 -4 10 2" fill="none" stroke="currentColor" stroke-width="1"/>
+<circle class="gf" cx="96" cy="92" r="2.8"/></svg><figcaption data-fr="Suspension et signal">Suspension & signal</figcaption></figure>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 3e année">Third-year project</span><span data-fr="Groupe de 6">Group of 6</span><span>2025</span></div>
@@ -713,11 +880,11 @@
           <a class="p-repo" href="https://github.com/killiang27/train-vibration-anomaly-detection" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-fr="Voir le dépôt">View repository</span></a>
           <p class="p-desc" data-fr="Au sein d'un groupe de six, j'ai participé à la conception d'une suspension semi-active pour train à grande vitesse : des ressorts pneumatiques à raideur variable associés à un actionneur hydraulique et un amortisseur secondaire, le tout modélisé sur la physique du quart de véhicule. J'ai ensuite développé un autoencodeur LSTM qui reconstruit le signal vibratoire et surveille l'erreur de reconstruction pour détecter les anomalies. Lorsqu'une véritable défaillance est confirmée, le système ordonne de lui-même au train de ralentir.">Working in a group of six, I helped design a semi-active suspension for a high-speed train: variable-stiffness air springs paired with a hydraulic actuator and a secondary damper, all modelled on quarter-car physics. I then built an LSTM autoencoder that reconstructs the vibration signal and watches the reconstruction error for anomalies. When it confirms a genuine fault, the system tells the train to slow down on its own.</p>
           <figure class="p-figure">
-          <img src="assets/vibration-sketch.png" alt="System-level architecture: carriage body, bogie frame and axle with air spring, hydraulic actuator, sensors and MCU/LSTM controller" loading="lazy" />
+          <img src="assets/vibration-sketch.webp" alt="System-level architecture: carriage body, bogie frame and axle with air spring, hydraulic actuator, sensors and MCU/LSTM controller" loading="lazy" />
           <figcaption>System-level architecture: air spring, hydraulic actuator, MEMS/piezo sensing and the MCU/LSTM anomaly-detection controller</figcaption>
         </figure>
         <figure class="p-figure">
-          <img src="assets/vibration-quartercar.png" alt="Quarter-car suspension displacement, anomaly score and hydraulic valve status" loading="lazy" />
+          <img src="assets/vibration-quartercar.webp" alt="Quarter-car suspension displacement, anomaly score and hydraulic valve status" loading="lazy" />
           <figcaption>Quarter-car physics: air-spring and hydraulic-damper displacement and valve response under fault injection</figcaption>
         </figure>
         </div></div>
@@ -725,6 +892,13 @@
     </article>
     <article class="project tcard" data-cat="robotics">
       <div class="p-num">03</div>
+      <figure class="p-sketch" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="62" width="74" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<circle cx="32" cy="88" r="8" fill="none" stroke="currentColor"/><circle cx="78" cy="88" r="8" fill="none" stroke="currentColor"/>
+<path d="M48 62 l24 -26 M58 62 l24 -26" stroke="currentColor" stroke-width="1.6"/>
+<path class="draw g dash" d="M80 34 Q130 -6 176 58" fill="none" stroke-width="1.1"/>
+<circle class="gf" cx="128" cy="16" r="3.2"/>
+<circle cx="176" cy="66" r="10" fill="none" stroke="currentColor"/><circle cx="176" cy="66" r="4" fill="none" stroke="currentColor"/>
+<path d="M8 98 H192" stroke="currentColor" stroke-dasharray="6 4" opacity=".7"/></svg><figcaption data-fr="Robot et trajectoire">Robot & trajectory</figcaption></figure>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 2e année">Second-year project</span><span data-fr="Équipe">Team</span><span>2024</span></div>
@@ -737,11 +911,11 @@
         <div class="p-detail"><div class="p-detail-inner">
           <p class="p-desc" data-fr="C'était un projet de groupe. L'équipe a construit un robot autonome qui suit une ligne grâce à des capteurs LDR et tire des balles de ping-pong sur une cible après avoir parcouru une distance définie. Le mécanisme de tir utilise deux canons imprimés en 3D, un marteau à élastique et un servomoteur qui libère une gâchette à ficelle, de sorte que les deux balles partent à des hauteurs différentes.">This was a group project. The team built an autonomous robot that tracks a line with LDR sensors and fires ping-pong balls at a target once it has covered a set distance. The firing mechanism uses two 3D-printed barrels, an elastic-band ball hammer and a servo that releases a string trigger, so the two balls launch at different heights.</p>
           <figure class="p-figure">
-          <img src="assets/robot-photo.png" alt="The built line-following robot with twin 3D-printed ping-pong cannons on a green chassis" loading="lazy" />
+          <img src="assets/robot-photo.webp" alt="The built line-following robot with twin 3D-printed ping-pong cannons on a green chassis" loading="lazy" />
           <figcaption>The built robot: twin 3D-printed barrels with elastic-band firing on the drive chassis</figcaption>
         </figure>
         <figure class="p-figure">
-          <img src="assets/robot-cannon.png" alt="Skeletal diagram of the dual-barrel cannon: ball hammer, elastic bands and servo-released string trigger" loading="lazy" />
+          <img src="assets/robot-cannon.webp" alt="Skeletal diagram of the dual-barrel cannon: ball hammer, elastic bands and servo-released string trigger" loading="lazy" />
           <figcaption>Cannon mechanism: ball hammer, elastic bands and a servo-released string trigger</figcaption>
         </figure>
         </div></div>
@@ -749,6 +923,12 @@
     </article>
     <article class="project tcard" data-cat="robotics cad">
       <div class="p-num">04</div>
+      <figure class="p-sketch" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M180 14 V100" stroke="currentColor" stroke-width="2"/><path d="M180 20 l8 -6 M180 34 l8 -6 M180 48 l8 -6 M180 62 l8 -6 M180 76 l8 -6 M180 90 l8 -6" stroke="currentColor" stroke-width=".8"/>
+<rect x="74" y="54" width="64" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M90 54 l8 -12 h22 l8 12" fill="none" stroke="currentColor"/>
+<circle cx="90" cy="80" r="7" fill="none" stroke="currentColor"/><circle cx="124" cy="80" r="7" fill="none" stroke="currentColor"/>
+<path class="draw" d="M146 40 H172 M166 34 l6 6 -6 6" fill="none" stroke="currentColor"/>
+<path class="draw g" d="M66 100 H20 M26 94 l-6 6 6 6" fill="none" stroke-width="1.2"/>
+<circle class="gf" cx="20" cy="88" r="2.6"/><path d="M8 88 H192" stroke="currentColor" opacity=".7"/></svg><figcaption data-fr="Impact et retour">Strike & return</figcaption></figure>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 1re année">First-year project</span><span>IMechE</span><span>2023</span></div>
@@ -762,11 +942,11 @@
           <p class="p-desc" data-fr="C'était un projet de groupe pour le défi IMechE. L'équipe a conçu et construit une voiture-robot qui fonce dans un mur puis recule exactement à son point de départ. La fiabilité reposait sur un calibrage soigné de la distance et une séquence de commande simple, répétable à chaque essai.">This was a group project for the IMechE challenge. The team designed and built a robot car that drives into a wall and then reverses back to exactly where it started. Getting it consistent came down to careful distance calibration and a simple control sequence the car could repeat every run.</p>
           <div class="figrow figrow-even">
           <figure class="p-figure">
-            <img src="assets/imeche-cad.png" alt="SolidWorks assembly of the IMechE robot car chassis, motor and drivetrain" loading="lazy" />
+            <img src="assets/imeche-cad.webp" alt="SolidWorks assembly of the IMechE robot car chassis, motor and drivetrain" loading="lazy" />
             <figcaption>SolidWorks chassis &amp; drivetrain assembly</figcaption>
           </figure>
           <figure class="p-figure">
-            <img src="assets/imeche-circuit.png" alt="DPDT switch circuit reversing the motor between power supply and drive" loading="lazy" />
+            <img src="assets/imeche-circuit.webp" alt="DPDT switch circuit reversing the motor between power supply and drive" loading="lazy" />
             <figcaption>DPDT reversing circuit: motor &amp; power supply</figcaption>
           </figure>
         </div>
@@ -775,6 +955,11 @@
     </article>
     <article class="project tcard" data-cat="cad">
       <div class="p-num">05</div>
+      <figure class="p-sketch" aria-hidden="true"><svg viewBox="0 0 200 110" fill="none" stroke-linecap="round" stroke-linejoin="round"><path class="draw" d="M8 26 C60 22 120 22 192 30 M8 92 C60 96 120 96 192 88" fill="none" stroke="currentColor" stroke-width=".8" opacity=".6"/>
+<path class="draw" d="M8 44 C50 40 70 36 96 38 S150 52 192 52 M8 74 C50 78 80 80 110 76 S160 66 192 66" fill="none" stroke="currentColor" stroke-width=".8" opacity=".6"/>
+<path d="M30 62 C40 46 72 42 104 48 C134 54 160 60 178 64 C150 66 120 68 90 70 C60 72 38 70 30 62 Z" fill="color-mix(in srgb,var(--ivory) 70%,transparent)" stroke="currentColor" stroke-width="1.3"/>
+<path class="g dash" d="M30 62 L178 64" stroke-width="1"/>
+<circle class="gf" cx="30" cy="62" r="2.6"/></svg><figcaption data-fr="Profil et écoulement">Aerofoil & flow</figcaption></figure>
       <div class="p-body">
         <div class="p-head">
           <div class="p-meta"><span data-fr="Projet de 1re année">First-year project</span><span data-fr="Groupe">Group</span><span>2023</span></div>
@@ -788,11 +973,11 @@
           <p class="p-desc" data-fr="Nous avons conçu, modélisé et testé en soufflerie une pale à échelle variable, pensée pour extraire le maximum de puissance du flux d'air. La géométrie a été réalisée sous JavaFoil et SolidWorks, puis nous avons mesuré courant, tension et puissance à différents régimes de ventilateur pour calculer le coefficient de performance et le rapport de vitesse en bout de pale, ainsi que les sources de perte de précision.">We designed, modelled and wind-tunnel tested a scalable aerofoil blade built to pull as much power as possible out of the airflow. The geometry came together in JavaFoil and SolidWorks, then we measured current, voltage and power across different fan speeds to work out the coefficient of performance and tip-speed ratio, along with where the experiment started losing accuracy.</p>
           <div class="figrow">
           <figure class="p-figure">
-            <img src="assets/aerofoil-cad.png" alt="SolidWorks model of the wind-turbine aerofoil blade" loading="lazy" />
+            <img src="assets/aerofoil-cad.webp" alt="SolidWorks model of the wind-turbine aerofoil blade" loading="lazy" />
             <figcaption>SolidWorks blade geometry</figcaption>
           </figure>
           <figure class="p-figure">
-            <img src="assets/aerofoil-cp.png" alt="Coefficient of performance against tip-speed ratio for 50% fan output" loading="lazy" />
+            <img src="assets/aerofoil-cp.webp" alt="Coefficient of performance against tip-speed ratio for 50% fan output" loading="lazy" />
             <figcaption>Coefficient of performance vs. tip-speed ratio</figcaption>
           </figure>
         </div>
@@ -814,22 +999,24 @@
         <div class="when">Jul – Aug 2025</div>
         <div>
           <h4 data-fr="Stage d'ingénierie">Engineering Internship</h4>
-          <div class="org" data-fr="VIVO Energy (licencié Shell) · Maroc">VIVO Energy (Shell Licensee) · Morocco</div>
+          <div class="org" data-fr="Vivo Energy (licencié Shell) · Maroc">Vivo Energy (Shell licensee) · Morocco</div>
           <ul>
-            <li data-fr="Accompagnement d'ingénieurs dans plus de trois disciplines liées aux infrastructures GPL et pétrolières, en appui au développement et à la gestion de projet.">Shadowed engineers across 3+ LPG and oil-infrastructure disciplines, supporting project development and management.</li>
-            <li data-fr="Apprentissage de la modélisation CAPEX/OPEX de bout en bout : structure des modèles Excel, prévision de la demande pétrolière et analyse des réserves de stockage, avec systèmes de sécurité.">Learned end-to-end CAPEX/OPEX modelling, covering Excel model structure, oil-demand forecasting and tank-reserve analytics with fail-safe systems.</li>
-            <li data-fr="Suivi de la construction et du soudage de réservoirs sous réglementation de sécurité stricte ; refonte du support d'intégration des ingénieurs de la division pour le portail de formation.">Monitored oil-tank construction and welding under strict safety regulation; redesigned the division's engineer-onboarding deck for the learning portal.</li>
+            <li data-fr="Participation à la conduite de projets au sein de plus de trois équipes d'infrastructures GPL et pétrolières, y compris aux réunions de livraison et de sécurité.">Contributed to project delivery across 3+ LPG and oil-infrastructure teams, taking part in delivery and safety discussions.</li>
+            <li data-fr="Analyse de modèles CAPEX/OPEX avec des ingénieurs seniors : prévisions de la demande pétrolière et analyse des réserves de stockage.">Analysed CAPEX/OPEX models with senior engineers, covering oil-demand forecasts and tank-reserve analytics.</li>
+            <li data-fr="Inspection sur site de la construction, du soudage et de la maintenance de réservoirs au regard de réglementations de sécurité strictes.">Inspected on-site oil-tank construction, welding and maintenance against strict safety regulations.</li>
+            <li data-fr="Refonte, avec l'ingénieur responsable, du support d'intégration des ingénieurs de la division Maroc pour le portail de formation.">Rewrote and redesigned the Morocco division's engineer-onboarding deck for the learning portal, with the managing engineer.</li>
           </ul>
         </div>
       </div>
       <div class="xp">
         <div class="when">Jul – Aug 2022</div>
         <div>
-          <h4 data-fr="Observation en ingénierie">Engineering Shadowing</h4>
+          <h4 data-fr="Stage d'observation en ingénierie">Engineering Work Shadowing</h4>
           <div class="org" data-fr="VPI Damhead Creek, groupe Vitol · Royaume-Uni">VPI Damhead Creek, Vitol Group · United Kingdom</div>
           <ul>
-            <li data-fr="Observation en temps réel du fonctionnement de turbines à gaz Mitsubishi 701F3 (~800 MW au total) et découverte de l'exploitation et de la surveillance de grands systèmes gaz-vapeur.">Shadowed real-time performance of Mitsubishi 701F3 gas turbines (~800 MW combined), learning operation and monitoring of large gas-and-steam systems.</li>
-            <li data-fr="Ajustement de la production selon la demande quotidienne régionale ; appui à la gestion des achats et à la rédaction de rapports.">Adjusted operational output against regional daily demand; supported procurement administration and formal reporting.</li>
+            <li data-fr="Surveillance en temps réel de turbines à gaz Mitsubishi 701F3 (environ 800 MW au total) aux côtés d'ingénieurs seniors.">Monitored Mitsubishi 701F3 gas turbines (~800 MW combined) in real time with senior engineers.</li>
+            <li data-fr="Ajustement de la production de la centrale à la demande régionale quotidienne ; relevé des niveaux d'O2 et de CO2 sur les flux de gaz de combustion.">Adjusted station output to daily regional demand and logged O2 and CO2 levels on combustion gas feeds.</li>
+            <li data-fr="Recherche d'alternatives pour 5 à 10 pièces de turbine, comme des composants d'aubes, avec une comparaison complète rédigée pour les ingénieurs seniors.">Sourced alternatives for 5 to 10 turbine parts, such as blade components, and wrote a full comparison for senior engineers.</li>
           </ul>
         </div>
       </div>
@@ -854,7 +1041,7 @@
           <h4 data-fr="Caporal, cadets de la Royal Air Force (CCF)">Corporal, Royal Air Force (CCF) Cadets</h4>
           <div class="org" data-fr="Leadership, navigation, premiers secours et pilotage">Leadership, navigation, first aid and flight training</div>
           <ul>
-            <li data-fr="Promu caporal ; formé à la navigation, à l'ordre serré, aux premiers secours et au pilotage (avions monomoteurs, simulateurs, hélicoptères Chinook/Puma).">Reached Corporal; trained in navigation, drill, first aid and flight (single-prop aircraft, simulators, Chinook/Puma helicopters).</li>
+            <li data-fr="Promu caporal ; insigne RAF Wings pour l'excellence en vol sur avion monomoteur ; formé à la navigation, à l'ordre serré, aux premiers secours et au pilotage (simulateurs, hélicoptères Chinook/Puma).">Reached Corporal and earned the RAF Wings badge for flight excellence in single-propeller aircraft; trained in navigation, drill, first aid, simulators and Chinook/Puma helicopters.</li>
           </ul>
         </div>
       </div>
@@ -862,7 +1049,7 @@
         <div class="when">2017 – 2018</div>
         <div>
           <h4 data-fr="Prix du Duc d'Édimbourg : argent et bronze">Duke of Edinburgh's Award: Silver &amp; Bronze</h4>
-          <div class="org" data-fr="Dont une expédition autonome de plus de 50 km sur trois jours">Including a self-sufficient 50+ km, three-day expedition</div>
+          <div class="org" data-fr="Dont une expédition autonome de plus de 50 km sur trois jours et six mois de bénévolat">Including a self-sufficient 50+ km, three-day expedition and six months of volunteering</div>
         </div>
       </div>
       <div class="xp">
@@ -878,19 +1065,19 @@
       <div class="eyebrow" data-fr="Formation">Education</div>
       <div class="xp">
         <div class="when">2026 →</div>
-        <div><h4>IE University, Madrid</h4><div class="org" data-fr="MSc Fintech, depuis septembre 2026">MSc Fintech, started September 2026</div></div>
+        <div><h4>IE Business School, Madrid</h4><div class="org" data-fr="Master in Fintech (MSc), depuis septembre 2026">Master in Fintech (MSc), started September 2026</div></div>
       </div>
       <div class="xp">
-        <div class="when">Jun – Jul 2026</div>
+        <div class="when">Jul 2026</div>
         <div><h4 data-fr="École d'été IE">IE Summer School</h4><div class="org" data-fr="Fondamentaux de la finance, Madrid">Finance Fundamentals, Madrid</div></div>
       </div>
       <div class="xp">
         <div class="when">2023 – 2026</div>
-        <div><h4>Lancaster University</h4><div class="org" data-fr="BEng (Hons) en ingénierie mécatronique, Second Class Honours (Division One)">Mechatronics Engineering BEng (Hons), Second Class Honours (Division One)</div></div>
+        <div><h4>Lancaster University</h4><div class="org" data-fr="BEng (Hons) en ingénierie mécatronique, Upper Second Class Honours (2:1)">BEng (Hons) Mechatronics Engineering, Upper Second Class Honours (2:1)</div></div>
       </div>
       <div class="xp">
         <div class="when">2022 – 2023</div>
-        <div><h4>University of Nottingham</h4><div class="org" data-fr="Ingénierie : physique avec astronomie et année préparatoire">Engineering: Physics with Astronomy &amp; Foundation Year</div></div>
+        <div><h4>University of Nottingham</h4><div class="org" data-fr="Ingénierie avec physique et astronomie, année préparatoire (validée avec mention Merit)">Engineering with Physics and Astronomy, Foundation Year (passed with Merit)</div></div>
       </div>
       <div class="xp">
         <div class="when">2015 – 2021</div>
@@ -901,7 +1088,7 @@
     <div class="xp-block">
       <div class="eyebrow" data-fr="Compétences techniques">Technical skills</div>
       <div class="skills">
-        <span>Python</span><span>Pandas · NumPy</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>Matplotlib</span><span>Gradio</span><span>MATLAB</span><span>C / C++ (embedded)</span><span>Machine learning</span><span>Time-series analysis</span><span>Predictive modelling</span><span>SolidWorks</span><span>AutoCAD</span><span>JavaFoil</span><span>CAPEX / OPEX modelling</span><span>Technical reporting</span>
+        <span>Python</span><span>Pandas · NumPy</span><span>Kaggle: Python</span><span>Kaggle: ML Fundamentals</span><span>Kaggle: Data Science</span><span>TensorFlow / Keras</span><span>scikit-learn</span><span>Matplotlib</span><span>Gradio</span><span>MATLAB</span><span>C / C++ (embedded)</span><span>Machine learning</span><span>Time-series analysis</span><span>Predictive modelling</span><span>SolidWorks</span><span>AutoCAD</span><span>JavaFoil</span><span>CAPEX / OPEX modelling</span><span>Technical reporting</span>
       </div>
     </div>
   </div>
@@ -913,7 +1100,7 @@
   <div class="wrap contact">
     <p class="eyebrow" data-fr="Restons en contact">Get in touch</p>
     <h2 data-fr="Construisons quelque chose">Let's build <em>something</em></h2>
-    <p class="lead" data-fr="Je suis ouvert aux échanges autour de l'ingénierie, du machine learning, de la fintech et de la finance quantitative. LinkedIn est le meilleur moyen de me joindre.">I'm open to conversations across engineering, machine learning, fintech and quantitative finance. LinkedIn is the best way to reach me.</p>
+    <p class="lead" data-fr="Je suis ouvert aux échanges autour de la fintech, de la finance quantitative, de la data et du machine learning. LinkedIn est le meilleur moyen de me joindre.">I'm open to conversations across fintech, quantitative finance, data and machine learning. LinkedIn is the best way to reach me.</p>
 
     <div class="card tcard">
       <svg class="card-crest" viewBox="0 0 64 72" role="img" aria-label="Killian Gerard monogram">
@@ -921,14 +1108,15 @@
         <path d="M32 9 L52.5 15.5 V35 C52.5 48 42.5 58 32 62.5 C21.5 58 11.5 48 11.5 35 V15.5 Z" fill="none" stroke="#A8A79E" stroke-width="0.7" opacity="0.55"/>
         <text x="32" y="42" font-family="Cormorant Garamond, Georgia, serif" font-weight="500" font-size="22" fill="#F4F0E6" text-anchor="middle">KG</text>
       </svg>
-      <div class="c-eyebrow" data-fr="Ingénierie mécatronique">Mechatronics Engineering</div>
+      <div class="c-eyebrow" data-fr="MSc Fintech · IE Business School">MSc Fintech · IE Business School</div>
       <div class="c-name">Killian <em>Gerard</em></div>
-      <div class="c-role" data-fr="Machine learning · Systèmes embarqués · Fintech">Machine Learning · Embedded Systems · Fintech</div>
+      <div class="c-role" data-fr="Fintech · Machine learning · Ingénierie">Fintech · Machine Learning · Engineering</div>
       <div class="c-rule"></div>
       <dl>
         <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/killian-g%C3%A9rard-362aba239" target="_blank">linkedin.com/in/killian-gerard</a></dd>
         <dt>GitHub</dt><dd><a href="https://github.com/killiang27" target="_blank">github.com/killiang27</a></dd>
-        <dt data-fr="Basé à">Based in</dt><dd data-fr="Londres · Madrid">London · Madrid</dd>
+        <dt data-fr="Basé à">Based in</dt><dd data-fr="Madrid · Londres">Madrid · London</dd>
+        <dt data-fr="Droit de travail">Work rights</dt><dd data-fr="UE et Royaume-Uni">EU &amp; UK</dd>
       </dl>
     </div>
 
@@ -950,6 +1138,7 @@
 
 <script>
   document.documentElement.classList.add('js');
+  const store={get:k=>{try{return store.get(k)}catch(e){return null}},set:(k,v)=>{try{store.set(k,v)}catch(e){}}};
   // entrance veil + hero stagger
   const veil=document.getElementById('veil');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -969,7 +1158,7 @@
   const onScroll=()=>{
     nav.classList.toggle('scrolled',scrollY>20);
     const h=document.documentElement.scrollHeight-innerHeight;
-    prog.style.width=(h>0?(scrollY/h*100):0)+'%';
+    prog.style.transform='scaleX('+(h>0?(scrollY/h):0).toFixed(4)+')';
 
     if(!reduce){
       if(heroBg) heroBg.style.transform=`translate3d(0, ${scrollY*0.12}px, 0)`;
@@ -990,9 +1179,14 @@
   links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
 
   // 1 · reveal on scroll
-  const reveals=document.querySelectorAll('.sec-head, .about-grid>div, .glance, .project, .xp, .xp-block>.eyebrow, .skills, .contact>*');
+  const reveals=document.querySelectorAll('.sec-head, .about-grid>div, .glance, .project, .xp, .xp-block>.eyebrow, .skills, .contact>*, .stat, .filters');
   reveals.forEach(el=>el.classList.add('reveal'));
-  const ro=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  const ro=new IntersectionObserver((es)=>{
+    // waterfall: items arriving together enter top to bottom, 80ms apart, capped at 480ms
+    es.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top||a.boundingClientRect.left-b.boundingClientRect.left)
+      .forEach((e,i)=>{const t=e.target,d=reduce?0:Math.min(i*80,480);t.style.transitionDelay=d+'ms';t.classList.add('in');ro.unobserve(t);
+        setTimeout(()=>{t.style.transitionDelay='';},d+900);});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
   reveals.forEach(el=>ro.observe(el));
 
   // 3 · active nav link via section observer
@@ -1016,9 +1210,9 @@
   const themeBtn=document.getElementById('themeBtn');
   const applyTheme=t=>{document.body.classList.toggle('dark',t==='dark');
     const mc=document.querySelector('meta[name=theme-color]'); if(mc) mc.setAttribute('content', t==='dark' ? '#15130F' : '#F4F0E6');};
-  let theme=localStorage.getItem('theme')||'light';
+  let theme=store.get('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
   applyTheme(theme);
-  themeBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';applyTheme(theme);localStorage.setItem('theme',theme);});
+  themeBtn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';applyTheme(theme);store.set('theme',theme);});
 
   // ---- Stat counters ----
   let countersDone=false, lang;
@@ -1061,11 +1255,11 @@
   const setLang=l=>{
     document.documentElement.lang=l;
     frEls.forEach(el=>{ el.innerHTML = (l==='fr') ? el.dataset.fr : el.dataset.en; });
-    paintLang(l); localStorage.setItem('lang',l);
+    paintLang(l); store.set('lang',l);
     if(window.__afterLang) window.__afterLang();
     if(countersDone) runCounters(true);
   };
-  lang=localStorage.getItem('lang')||'en';
+  lang=store.get('lang')||'en';
   if(lang==='fr') setLang('fr'); else paintLang('en');
   langBtn.addEventListener('click',()=>{lang=lang==='fr'?'en':'fr';setLang(lang);});
 
@@ -1363,6 +1557,43 @@
     };
   })();
 
+  // ---- v2: HUD clock, MSc progress ring, sketch draw-in ----
+  (()=>{
+    const clk=document.getElementById('hudClock');
+    const tick=()=>{try{clk.textContent='MAD '+new Intl.DateTimeFormat('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Madrid'}).format(new Date());}catch(e){}};
+    if(clk){tick();setInterval(tick,15000);}
+    const start=new Date('2026-09-01'),end=new Date('2027-07-31');
+    const pct=Math.max(0,Math.min(100,Math.round((Date.now()-start)/(end-start)*100)));
+    const arc=document.getElementById('hudArc'),pe=document.getElementById('hudPct');
+    const fill=()=>{if(arc)arc.style.strokeDashoffset=(389.6*(1-pct/100)).toFixed(1);if(pe)pe.textContent=pct+'%';};
+    if(reduce)fill();else setTimeout(fill,1700);
+    const po=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');po.unobserve(e.target);}}),{threshold:.25});
+    document.querySelectorAll('.project').forEach(p=>po.observe(p));
+    document.querySelectorAll('.p-sketch').forEach(sk=>sk.addEventListener('click',()=>{const b=sk.closest('.project').querySelector('.p-toggle');if(b)b.click();}));
+  })();
+  // ---- v2 motion: scroll-linked depth (transform only, rAF-throttled, off under reduced motion) ----
+  (()=>{
+    document.querySelectorAll('.hud').forEach(el=>el.addEventListener('animationend',()=>el.classList.add('settled'),{once:true}));
+    if(reduce) return;
+    const ks=[.14,-.09,.18];
+    const par=[...document.querySelectorAll('.hero-bg span')].map((el,i)=>({el,k:ks[i%3]}));
+    const grid=document.querySelector('.about-bg');
+    const r1=document.querySelector('.hud-ring .r-spin'),r2=document.querySelector('.hud-ring .r-spin2');
+    const hud=document.querySelector('.hud');
+    let queued=false;
+    const run=()=>{queued=false;const vh=innerHeight,y=scrollY;
+      par.forEach(p=>{const r=p.el.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;
+        p.el.style.transform='translate3d(0,'+((r.top+r.height/2-vh/2)*p.k).toFixed(1)+'px,0)';});
+      if(grid){const r=grid.parentElement.getBoundingClientRect();if(r.bottom>0&&r.top<vh)grid.style.transform='translate3d(0,'+(r.top*-.07).toFixed(1)+'px,0)';}
+      if(r1)r1.setAttribute('transform','rotate('+((y*.12)%360).toFixed(2)+' 66 66)');
+      if(r2)r2.setAttribute('transform','rotate('+((-y*.08)%360).toFixed(2)+' 66 66)');
+      if(y<vh*1.3){
+        if(hud&&hud.classList.contains('settled')&&innerWidth>=1180)hud.style.transform='translate3d(0,'+(y*-.07).toFixed(1)+'px,0)';
+      }
+    };
+    addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(run);}},{passive:true});
+    addEventListener('resize',run);run();
+  })();
 </script>
 </body>
 </html>
